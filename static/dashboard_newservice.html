@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="shortcut icon" href="static/images/favicon.ico">
+</head>
+<body>
+    <div class="main-dashboard">
+        <div class="nav">
+             <div style="display: flex;margin-top: 10%;width: 60%;height: 10%;border-right: 3px solid #ffffff;"></div>
+             <div style="display: flex;width: 60%;height: 20%;border-right: 1px solid #ffffff;"></div>
+             <div class="square">
+                <div class="diagonal"></div>
+            </div>
+            <div class="icon diamond active"></div>
+            <div class="square">
+                <div class="diagonal2"></div>
+            </div>
+            <div style="display: flex;width: 55%;height: 50%;border-left: 1px solid #ffffff;"></div>
+        </div>
+
+        <div class="main-panel">
+        <div class="top-view">
+            <div class="top-view-main-text">
+                <img src="static/images/d2.png" alt="" style="width: 3%;height: auto;margin-right: 1%;">
+                <span style="margin-top: 5px;">Создание нового микросервиса</span>
+            </div>
+            <div class="top-view-container">
+                <form id="imageForm" style="display: flex; gap: 10px; align-items: center;">
+                    <input
+                    type="text"
+                    id="imageInput"
+                    name="image_url"
+                    placeholder="ghcr.io/username/image:tag или docker.io/library/image"
+                    required
+                    style="padding: 8px 12px; border: 1px solid #ccc; border-radius: 4px; width: 100%; max-width: 500px;"
+                    />
+                    <button
+                    type="submit"
+                    style="padding: 8px 16px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer;"
+                    >
+                    Отправить
+                    </button>
+                </form>
+
+                <script src="/static/js/script.js"></script>
+                    <script>
+                        const form = document.getElementById('imageForm');
+                        const input = document.getElementById('imageInput');
+
+                        function isValidImageUrl(url) {
+                            // Простая проверка: только разрешённые реестры
+                            const allowed = ['ghcr.io', 'docker.io'];
+                            try {
+                            const parts = url.split('/');
+                            const domain = parts[0];
+                            return allowed.includes(domain) && parts.length >= 2 && parts[1].length > 0;
+                            } catch {
+                            return false;
+                            }
+                        }
+
+                        function showNotification(message, isError = false) {
+                            // Вставь свою реализацию сюда
+                            alert((isError ? 'Ошибка: ' : 'Успешно: ') + message);
+                        }
+
+                        form.addEventListener('submit', async (e) => {
+                            e.preventDefault();
+
+                            const url = input.value.trim();
+
+                            if (!isValidImageUrl(url)) {
+                            input.style.border = '1px solid red';
+                            showNotification('Неверная ссылка на Docker-образ. Допустимы только ghcr.io и docker.io.', true);
+                            return;
+                            }
+
+                            // Сброс стиля ошибки
+                            input.style.border = '1px solid #ccc';
+
+                            try {
+                            const response = await fetch('/api/push_service', {
+                                method: 'POST',
+                                headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded',
+                                },
+                                body: new URLSearchParams({ image_url: url }),
+                            });
+
+                            if (response.ok) {
+                                showNotification('Образ успешно отправлен!');
+                                form.reset();
+                            } else {
+                                const errText = await response.text();
+                                showNotification(`Ошибка при отправке: ${errText}`, true);
+                            }
+                            } catch (err) {
+                            showNotification('Сетевая ошибка при отправке формы.', true);
+                            }
+                        });
+                        </script>
+                <div
+                id="notification"
+                style="
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background-color: #4CAF50;
+                    color: white;
+                    padding: 12px 20px;
+                    border-radius: 6px;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                    opacity: 0;
+                    transition: opacity 0.5s ease;
+                    display: none;
+                    z-index: 1000;
+                    font-family: sans-serif;
+                    max-width: 400px;
+                    word-wrap: break-word;
+                "
+                ></div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+</body>
+</html>

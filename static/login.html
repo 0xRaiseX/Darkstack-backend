@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Авторизация</title>
+  <style>
+    body {
+      background-color: #ffffff;
+      color: #000000;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 360px;
+      padding: 40px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 24px;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      width: 91%;
+      padding: 12px;
+      margin-bottom: 4px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    .input-error {
+      border-color: red;
+    }
+
+    .error-message {
+      color: red;
+      font-size: 13px;
+      margin-bottom: 12px;
+      text-align: left;
+    }
+
+    .global-error {
+      color: red;
+      margin-bottom: 16px;
+      font-size: 14px;
+    }
+
+    .forgot {
+      text-align: right;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
+    .forgot a {
+      color: black;
+      text-decoration: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #000;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .register {
+      margin-top: 24px;
+      font-size: 14px;
+    }
+
+    .register a {
+      color: black;
+      text-decoration: underline;
+    }
+
+    .logo {
+      margin-bottom: 24px;
+      font-weight: bold;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>С возвращением!</h2>
+    
+    <form id="loginForm" method="post" novalidate>
+      <div class="global-error" id="globalError" style="display: none;">Неверный логин или пароль</div>
+
+      <input type="email" id="email" placeholder="Электронная почта">
+      <div class="error-message" id="emailError" style="display: none;">Это поле обязательно</div>
+
+      <input type="password" id="password" placeholder="Пароль">
+      <div class="error-message" id="passwordError" style="display: none;">Это поле обязательно</div>
+
+      <div class="forgot"><a href="/reset">Забыли пароль?</a></div>
+      <button type="submit">Войти</button>
+    </form>
+
+    <div style="width: 100%;margin-top: 15%;display: flex;align-items: center;">
+        <div style="width: 40%;border-top: 1px solid #000;"></div>
+        <div style="margin-left: 5%;margin-right: 5%;">или</div>
+        <div style="width: 40%;border-top: 1px solid #000;"></div>
+    </div>
+
+    <div class="register">
+      Нет аккаунта? <a href="/register">Зарегистрироваться</a>
+    </div>
+  </div>
+
+<script>
+  const form = document.querySelector('form');
+  const emailInput = document.querySelector('input[type="email"]');
+  const passwordInput = document.querySelector('input[type="password"]');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Очистка предыдущих ошибок
+    emailInput.style.borderColor = '';
+    passwordInput.style.borderColor = '';
+    document.querySelectorAll('.error').forEach(el => el.remove());
+
+    let hasError = false;
+
+    // Валидация
+    if (!emailInput.value.trim()) {
+      showError(emailInput, 'Введите почту');
+      hasError = true;
+    }
+
+    if (!passwordInput.value.trim()) {
+      showError(passwordInput, 'Введите пароль');
+      hasError = true;
+    }
+
+    if (hasError) return;
+
+    try {
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        credentials: 'include', // ⬅️ важно для куки
+        body: JSON.stringify({
+          email: emailInput.value.trim(),
+          password: passwordInput.value.trim()
+        })
+      });
+
+      const data = await response.json();
+
+      if (data.status === "ok") {
+        window.location.href = '/dashboard'; // ⬅️ редирект при успехе
+      } else {
+        showFormMessage(data.message || 'Ошибка авторизации');
+      }
+    } catch (err) {
+      showFormMessage('Ошибка сервера. Повторите позже.');
+      console.error(err);
+    }
+  });
+
+  function showError(input, message) {
+    input.style.borderColor = 'red';
+    const error = document.createElement('div');
+    error.className = 'error';
+    error.style.color = 'red';
+    error.style.fontSize = '12px';
+    error.style.textAlign = 'left';
+    error.style.marginBottom = '8px';
+    error.textContent = message;
+    input.insertAdjacentElement('afterend', error);
+  }
+
+  function showFormMessage(message) {
+    const msg = document.createElement('div');
+    msg.className = 'error';
+    msg.style.color = 'red';
+    msg.style.marginTop = '16px';
+    msg.textContent = message;
+    form.appendChild(msg);
+  }
+</script>
+
+</body>
+</html>

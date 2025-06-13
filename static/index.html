@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darkstack | Главная страница</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="shortcut icon" href="/static/images/logo.ico">
+</head>
+<body>
+    <header>
+        <a class="logo" href="">
+            <img src="/static/images/logo.png" alt="" style="width: 5%;height: auto;">
+            <img src="/static/images/logo-text.png" alt="" style="width: 35%;height: auto;z-index: 10;margin-left: 2%;">
+        </a>
+        <div class="logo-panel">
+              <div>Главная</div>
+              <div>О компании</div>
+              <div>Контакты</div>
+              <div>Telegram</div>
+        </div>
+        <div class="button-logo-container">
+            <a class="main-button-logo" href="/login">
+              <span style="font-size: 0.85rem;">Войти</span>
+            </a>
+        </div>
+    </header>
+
+    <div class="main-container">
+      <div class="curved-section">
+        <div class="main-bussines slide-in">
+            <div style="display: flex;align-items: center;font-family: AeonikMedium;margin-top: 1%;">
+              <img src="/static/images/d2.png" alt="" style="width: 4%;height: auto;margin-right: 1%;">
+              Здесь работает ваш
+            </div>
+            <span style="font-size: 18rem;margin-left: -1%;">БИЗНЕС</span>
+        </div>
+        <div class="main-for slide-in">Самые лучшие микросервисы по самой низкой цене. Возьмем на себя управление вашей технической частью бизнеса, а вы продолжите заниматься главным.</div>
+        <div class="main-button slide-in">Создать микросервис</div>
+        </div>
+        <div class="block-a"></div>
+    </div>
+
+    <div class="text-container">
+        <div class="text-1">
+            <span style="font-size: 4rem;font-family: AeonikMedium;">Микросервисы - это контейнеры</span>
+            <span style="margin-top: 3%;">Самые лучшие микросервисы по самой низкой цене. Возьмем на себя управление вашей технической частью бизнеса, а вы продолжите заниматься главным.</span></div>
+        <div class="text-2">
+            <img src="/static/images/main-container.png" alt="" style="width: 50%;height: auto;margin-top: 20%;">
+        </div>
+    </div>
+
+    <script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const elements = document.querySelectorAll('.slide-in');
+    elements.forEach((el, i) => {
+      setTimeout(() => {
+        el.classList.add('visible');
+      }, i * 200);
+    });
+  });
+</script>
+
+    <div class="status-container">
+        <div class="status-text">ТЕКУЩЕЕ СОСТОЯНИЕ</div>
+        <div class="status-data">
+            <div class="status-a">
+              <div class="a-text">24</div>
+              <div class="a-description">Бизнесов обслуживаем</div>
+            </div>
+            <div class="status-a">
+              <div class="a-text">352</div>
+              <div class="a-description">Сервисов запущено</div>
+            </div>
+            <div class="status-a">
+              <div class="a-text">100,000+</div>
+              <div class="a-description">Рублей сэкономлено</div>
+            </div>
+        </div>
+        <div class="r">
+
+        </div>
+    </div>
+
+    <div class="project-container">
+      <div style="font-family: Aeonik;font-size: 3rem;font-family: AeonikMedium;">О ПРОЕКТЕ</div>
+      <div style="display: flex;width: 40%;margin-top: 3%;font-size: 1.2rem;">Платформа для быстрой разработки, развертывания и управления связанными микросервисами. Она позволяет запускать, отключать и модифицировать сервисы в реальном времени, объединять их в общую инфраструктуру с общей базой данных и настраиваемыми связями. Минимум кода — максимум контроля и гибкости для разработчиков и команд.</div>
+    </div>
+
+    <div class="pluses">
+      <div class="text-p-container">
+        <img src="/static/images/p-module.png" alt="" style="width: 10%;height: auto;">
+        <div>Наши преимущества</div>
+      </div>
+      <div class="data-blocks-p">
+        <div class="data-block-p"></div>
+        <div class="data-block-p"></div>
+        <div class="data-block-p"></div>
+      </div>
+  </div>
+
+    <div class="faq-container">
+    <div class="faq">
+    <div class="faq-text">Ваши вопросы<br>и наши ответы на них</div>
+    <div class="faq-item" style="border-top: 1px solid #ccc;margin-top: 1%;">
+      <div class="faq-question">
+        Что такое облачные вычисления?
+        <span class="arrow">&#9660;</span>
+      </div>
+      <div class="faq-answer">
+        Облачные вычисления позволяют использовать серверные ресурсы по интернету без необходимости покупать собственное оборудование.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        Как работает Kubernetes?
+        <span class="arrow">&#9660;</span>
+      </div>
+      <div class="faq-answer">
+        Kubernetes автоматически управляет контейнерами приложений, распределяя их по кластерам и масштабируя по мере необходимости.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        Какие языки программирования лучше для backend?
+        <span class="arrow">&#9660;</span>
+      </div>
+      <div class="faq-answer">
+        Популярные языки для backend: Python, Go, Rust, Java и Node.js, в зависимости от проекта и требуемой производительности.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        Какие языки программирования лучше для backend?
+        <span class="arrow">&#9660;</span>
+      </div>
+      <div class="faq-answer">
+        Популярные языки для backend: Python, Go, Rust, Java и Node.js, в зависимости от проекта и требуемой производительности.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        Как ухаживать за рассадой огурцов?
+        <span class="arrow">&#9660;</span>
+      </div>
+      <div class="faq-answer">
+        О как! Даже мы не ожидали здесь этот вопрос, оставим его как посхалку :> Хорошего вам дня!
+      </div>
+    </div>
+    <div class="main-button-faq">Ладно, запускаемся</div>
+  </div>
+  <div class="faq-image">
+  </div>
+  </div>
+
+     <script>
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const item = question.parentElement;
+
+        if (item.classList.contains('active')) {
+          item.classList.remove('active');
+        } else {
+          document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+          item.classList.add('active');
+        }
+      });
+    });
+  </script>
+
+  <div class="end-o-kak">
+    О КАК
+  </div>
+  <div class="end-o-kak2">
+    САЙТ ЗАКОНЧИЛСЯ
+
+  </div>
+
+<div class="marquee-container">
+  <div class="marquee-track" id="marquee">
+    <div class="block">Docker</div>
+    <div class="block">Контейнеры</div>
+    <div class="block">Микросервисы</div>
+    <div class="block">Бизнес</div>
+    <div class="block">Данные</div>
+  </div>
+</div>
+
+<script>
+  const marquee = document.getElementById('marquee');
+
+  // Дублируем блоки, чтобы заполнить всю ширину окна
+  function fillMarquee() {
+    const containerWidth = window.innerWidth;
+    const track = marquee;
+    const block = track.children[0];
+    const blockWidth = block.offsetWidth + 20; // включая margin
+    const visibleCount = Math.ceil(containerWidth / blockWidth);
+
+    const originalBlocks = Array.from(track.children);
+
+    // Дублируем блоки пока не будет минимум 2x нужного количества
+    while (track.children.length < visibleCount * 2) {
+      originalBlocks.forEach(cloneSource => {
+        const clone = cloneSource.cloneNode(true);
+        track.appendChild(clone);
+      });
+    }
+
+    // Устанавливаем длительность анимации пропорционально ширине контента
+    const totalWidth = track.offsetWidth;
+    const speed = 60; // пикселей в секунду
+    const duration = totalWidth / speed;
+
+    track.style.animationDuration = `${duration}s`;
+  }
+
+  // Заполнить ленту при загрузке
+  fillMarquee();
+
+  // Адаптация при изменении размера окна
+  window.addEventListener('resize', () => {
+    marquee.innerHTML = ''; // очистить
+    // Добавим изначальные 3 блока снова
+    for (let i = 0; i < 3; i++) {
+      const div = document.createElement('div');
+      div.className = 'block';
+      marquee.appendChild(div);
+    }
+    fillMarquee();
+  });
+</script>
+
+        <div class="end">
+        <div class="end-text">DARKSTACK</div>
+        <div class="end-button-container">
+            <div class="end-button">Запустить микросервис</div>
+        </div>
+        <div class="end-buttons-container" style="margin-top: 3%;">
+            <div class="end-buttons2">
+                <div>Главная</div>
+                <div>О компании</div>
+                <div>Контакты</div>
+                <div>Telegram</div>
+            </div>
+        </div>
+
+        <div class="end-buttons-container" style="margin-top: 2%;flex-direction: column;">
+
+              <a style="font-size: 0.9rem;cursor: pointer;margin-top: 50px;color: #202325;" href="/data_policy">Политика конфиденциальности</a>
+              <a style="font-size: 0.9rem;margin-top: 15px;cursor: pointer;color: #202325;" href="/user_agreement">Пользовательское соглашение</a>
+
+            <div class="end-buttons3">
+                2025 Все права защищены
+            </div>
+        </div>
+    </div>
+
+<!-- 
+    <script>
+  let scrollTarget = 0;
+  let currentScroll = 0;
+  let isScrolling = false;
+
+  window.addEventListener('wheel', (e) => {
+    scrollTarget += e.deltaY;
+    scrollTarget = Math.max(0, Math.min(scrollTarget, document.body.scrollHeight - window.innerHeight));
+
+    if (!isScrolling) requestAnimationFrame(smoothScroll);
+    isScrolling = true;
+
+    e.preventDefault();
+  }, { passive: false });
+
+  function smoothScroll() {
+    currentScroll += (scrollTarget - currentScroll) * 0.1;
+
+    window.scrollTo(0, currentScroll);
+
+    if (Math.abs(scrollTarget - currentScroll) > 0.5) {
+      requestAnimationFrame(smoothScroll);
+    } else {
+      isScrolling = false;
+    }
+  }
+</script> -->
+</body>
+</html>
+
+<!-- Timefui.com .cloud  -->
+ <!-- Darkserive.cloud darkservice.com -->
+  <!-- darkstack.tech .com .ru -->

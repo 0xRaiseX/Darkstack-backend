@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Авторизация</title>
+  <style>
+    body {
+      background-color: #ffffff;
+      color: #000000;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 360px;
+      padding: 40px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 24px;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      width: 91%;
+      padding: 12px;
+      margin-bottom: 4px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    .input-error {
+      border-color: red;
+    }
+
+    .error-message {
+      color: red;
+      font-size: 13px;
+      margin-bottom: 12px;
+      text-align: left;
+    }
+
+    .global-error {
+      color: red;
+      margin-bottom: 16px;
+      font-size: 14px;
+    }
+
+    .forgot {
+      text-align: right;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
+    .forgot a {
+      color: black;
+      text-decoration: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #000;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .register {
+      margin-top: 24px;
+      font-size: 14px;
+    }
+
+    .register a {
+      color: black;
+      text-decoration: underline;
+    }
+
+    .logo {
+      margin-bottom: 24px;
+      font-weight: bold;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h3>Восстановление пароля</h3>
+
+    <form id="reset-form" method="post" action="/api/request-reset" novalidate>
+      <input type="email" name="email" id="email" placeholder="Email">
+      <div id="email-error" class="error-message" style="display: none;"></div>
+
+      <button type="submit">Получить код</button>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById("reset-form");
+    const emailInput = document.getElementById("email");
+    const emailError = document.getElementById("email-error");
+
+    function validateEmail(email) {
+      const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return pattern.test(email);
+    }
+
+    function showError(message) {
+      emailInput.classList.add("input-error");
+      emailError.textContent = message;
+      emailError.style.display = "block";
+    }
+
+    function clearError() {
+      emailInput.classList.remove("input-error");
+      emailError.textContent = "";
+      emailError.style.display = "none";
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      clearError();
+
+      const email = emailInput.value.trim();
+
+      if (!validateEmail(email)) {
+        showError("Введите корректный email.");
+        return;
+      }
+
+      try {
+        const formData = new FormData(form);
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: formData
+        });
+
+        const result = await response.json();
+
+        if (response.ok && result.status === "ok") {
+          window.location.href = '/verify?email=' + email;
+        } else {
+          // Пример обработки ошибок от сервера
+          showError(result.message || "Ошибка. Попробуйте позже.");
+        }
+      } catch (err) {
+        console.error("Ошибка при отправке формы:", err);
+        showError("Ошибка соединения с сервером.");
+      }
+    });
+  </script>
+</body>
+</html>
