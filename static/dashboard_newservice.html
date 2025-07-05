@@ -3,130 +3,310 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Панель управления Darkstack</title>
     <link rel="stylesheet" href="/static/css/styles.css">
-    <link rel="shortcut icon" href="static/images/favicon.ico">
+    <link rel="shortcut icon" href="/static/images/favicon.ico">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <style>
+.container {
+  max-width: 440px;
+  border: 1px solid #000;
+  padding: 3% 2%;
+  border-radius: 25px;
+}
+
+.balance123 {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-family: AeonikMedium;
+}
+
+.balance-text {
+    font-size: 2rem;
+}
+
+.balance .icon {
+  font-size: 2rem;
+  margin-right: 0.5rem;
+}
+
+.menu {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.menu a {
+  color: #2e2e2e;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.menu a.active {
+  color: #000000;
+  font-weight: bold;
+  border-bottom: 2px solid #000000;
+}
+
+.form {
+  background-color: #ffffff;
+
+  border-radius: 10px;
+}
+
+label {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  font-size: 1rem;
+  border: 1px solid #000;
+  box-sizing: border-box;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.checkbox-block {
+  margin-top: 1rem;
+}
+
+.checkbox-block input[type="checkbox"] {
+  margin-right: 0.5rem;
+}
+
+.checkbox-block a {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.submit-btn {
+  margin-top: 2.5rem;
+  width: 55%;
+  background-color: #000000;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  color: #ffffff;
+}
+
+.submit-btn:hover {
+  background-color: #0e0f0f;
+}
+
+.cancel-btn {
+  margin-top: 2.5rem;
+  width: 45%;
+  padding: 0.8rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #000;
+  display: flex;
+  justify-content: center;
+}
+
+.cancel:hover {
+  background-color: #a8a8a8;
+}
+
+.hidden {
+      display: none;
+    }
+
+    input.error, select.error {
+  border-color: red;
+}
+
+.error-message {
+  color: red;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+
+    </style>
     <div class="main-dashboard">
         <div class="nav">
-             <div style="display: flex;margin-top: 10%;width: 60%;height: 10%;border-right: 3px solid #ffffff;"></div>
-             <div style="display: flex;width: 60%;height: 20%;border-right: 1px solid #ffffff;"></div>
+             <div style="display: flex;margin-top: 10%;width: 54px;height: 10%;border-right: 3px solid #ffffff;">
+                <img src="/static/images/logo-white.png" alt="" style="width: 30px;height: 50px;margin-left: 23%;margin-top: 25%;">
+             </div>
+             <div style="display: flex;width: 54px;height: 20%;border-right: 1px solid #ffffff;"></div>
              <div class="square">
                 <div class="diagonal"></div>
             </div>
-            <div class="icon diamond active"></div>
+           <div class="icon diamond active">
+                <a href="/dashboard" class="tooltip" style="display: flex;cursor: pointer;padding: 10px;margin-left: 0;margin-top: 0;">
+                    <img src="/static/images/logo-white.png" alt="">
+                </a>
+            </div>
             <div class="square">
                 <div class="diagonal2"></div>
             </div>
-            <div style="display: flex;width: 55%;height: 50%;border-left: 1px solid #ffffff;"></div>
+            <div style="display: flex;;width: 54px;height: 50%;border-left: 1px solid #ffffff;margin-top: 2px;">
+                <div>
+                    <a href="/dashboard/finance" style="display: flex;margin-left: 8%;" class="tooltip">
+                        <img src="/static/images/wallet.png" alt="" class="custom-img">
+                        <span class="tooltip-text">Финансы</span>
+                    </a>
+                    <a href="/dashboard/newservice" style="display: flex;margin-left: 8%;margin-top: 12%;" class="tooltip">
+                        <img src="/static/images/image.png" alt="" class="custom-img">
+                        <span class="tooltip-text">Создать</span>
+                    </a>
+                    <a href="/dashboard/settings" style="display: flex;margin-top: 12%;margin-left: 8%;" class="tooltip">
+                        <img src="/static/images/settings2.png" alt="" class="custom-img">
+                        <span class="tooltip-text">Настройки</span>
+                    </a>
+                    <a href="" style="display: flex;margin-top: 12%;margin-left: 8%;" class="tooltip">
+                        <img src="/static/images/help.png" alt="" class="custom-img">
+                        <span class="tooltip-text">Помощь</span>
+                    </a>
+                </div>
+                <div style="position: absolute;color: #8d8d8d;bottom: 2%;font-size: 0.7rem;margin-left: 10px;">connected//</div>
+            </div>
         </div>
-
         <div class="main-panel">
-        <div class="top-view">
-            <div class="top-view-main-text">
-                <img src="static/images/d2.png" alt="" style="width: 3%;height: auto;margin-right: 1%;">
-                <span style="margin-top: 5px;">Создание нового микросервиса</span>
-            </div>
-            <div class="top-view-container">
-                <form id="imageForm" style="display: flex; gap: 10px; align-items: center;">
-                    <input
-                    type="text"
-                    id="imageInput"
-                    name="image_url"
-                    placeholder="ghcr.io/username/image:tag или docker.io/library/image"
-                    required
-                    style="padding: 8px 12px; border: 1px solid #ccc; border-radius: 4px; width: 100%; max-width: 500px;"
-                    />
-                    <button
-                    type="submit"
-                    style="padding: 8px 16px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer;"
-                    >
-                    Отправить
-                    </button>
-                </form>
-
-                <script src="/static/js/script.js"></script>
-                    <script>
-                        const form = document.getElementById('imageForm');
-                        const input = document.getElementById('imageInput');
-
-                        function isValidImageUrl(url) {
-                            // Простая проверка: только разрешённые реестры
-                            const allowed = ['ghcr.io', 'docker.io'];
-                            try {
-                            const parts = url.split('/');
-                            const domain = parts[0];
-                            return allowed.includes(domain) && parts.length >= 2 && parts[1].length > 0;
-                            } catch {
-                            return false;
-                            }
-                        }
-
-                        function showNotification(message, isError = false) {
-                            // Вставь свою реализацию сюда
-                            alert((isError ? 'Ошибка: ' : 'Успешно: ') + message);
-                        }
-
-                        form.addEventListener('submit', async (e) => {
-                            e.preventDefault();
-
-                            const url = input.value.trim();
-
-                            if (!isValidImageUrl(url)) {
-                            input.style.border = '1px solid red';
-                            showNotification('Неверная ссылка на Docker-образ. Допустимы только ghcr.io и docker.io.', true);
-                            return;
-                            }
-
-                            // Сброс стиля ошибки
-                            input.style.border = '1px solid #ccc';
-
-                            try {
-                            const response = await fetch('/api/push_service', {
-                                method: 'POST',
-                                headers: {
-                                'Content-Type': 'application/x-www-form-urlencoded',
-                                },
-                                body: new URLSearchParams({ image_url: url }),
-                            });
-
-                            if (response.ok) {
-                                showNotification('Образ успешно отправлен!');
-                                form.reset();
-                            } else {
-                                const errText = await response.text();
-                                showNotification(`Ошибка при отправке: ${errText}`, true);
-                            }
-                            } catch (err) {
-                            showNotification('Сетевая ошибка при отправке формы.', true);
-                            }
-                        });
-                        </script>
-                <div
-                id="notification"
-                style="
-                    position: fixed;
-                    top: 20px;
-                    right: 20px;
-                    background-color: #4CAF50;
-                    color: white;
-                    padding: 12px 20px;
-                    border-radius: 6px;
-                    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-                    opacity: 0;
-                    transition: opacity 0.5s ease;
-                    display: none;
-                    z-index: 1000;
-                    font-family: sans-serif;
-                    max-width: 400px;
-                    word-wrap: break-word;
-                "
-                ></div>
+            <img src="/static/images/logo-text.png" alt="" style="width: 140px;height: auto;position: absolute;top: -1%;margin-left: 3%">
+        <div class="top-view" style="height: 18%;">
+            <div style="display: flex;height: 100%;">
+                <div class="top-view-main-text">
+                    <img src="/static/images/d2.png" alt="" style="width: 5%;height: auto;margin-right: 1%;">
+                    <span style="margin-top: 5px;">Создание нового микросервиса</span>
+                </div>
             </div>
         </div>
-    </div>
+        <div class="top-view-module" style="height:71%;margin-left: 3%;flex-direction: row;width: 90%;justify-content: space-between;">
+                 <form id="serviceForm" style="max-width: 520px;width: 31%;overflow: auto;">
+          <div class="form-group">
+            <label for="typeSelect">Тип</label>
+            <select id="typeSelect" name="type">
+              <option value="microservice" selected>Микросервис</option>
+              <option value="database">База данных</option>
+            </select>
+          </div>
 
+           <div class="form-group">
+              <label for="nameInput">Название сервиса</label>
+              <input
+                type="text"
+                id="nameInput"
+                name="nameInput"
+              />
+            </div>
+
+          <div id="microserviceFields">
+            <div class="form-group">
+              <label for="imageInput">Ссылка на Docker-образ</label>
+              <input
+                type="text"
+                id="imageInput"
+                name="image_url"
+                placeholder="ghcr.io/username/image:tag или docker.io/library/image"
+                
+              />
+            </div>
+            <div class="form-group">
+              <label for="portInput">Порт, на котором работает система</label>
+              <input
+                type="number"
+                id="portInput"
+                name="port"
+                placeholder="Например: 8080"
+                
+              />
+            </div>
+            <div class="form-group">
+              <label for="tarifSelect">Выберите тариф</label>
+              <select id="tarifSelect" name="type">
+                <option value="mini">75 ₽ (0.2 CPU, 256 RAM) - Мини</option>
+                <option value="standart" selected>105 ₽ (0.5 CPU, 512 RAM) - Стандартный</option>
+                <option value="hard">150 ₽ (1 CPU, 1024 RAM) - Мощный </option>
+                <option value="premium">300 ₽ (2 CPU, 2048 RAM) - Премиум</option>
+              </select>
+            </div>
+            <!-- <div class="form-group">
+              <label for="vaultSelect">Выделить физическое хранилеще</label>
+             <select id="vaultSelect" name="type">
+              <option value="0" selected>Нет</option>
+              <option value="10">10 Гб</option>
+              <option value="20">20 Гб</option>
+            </select>
+            </div> -->
+          </div>
+
+          <!-- Поля базы данных -->
+          <div id="databaseFields" class="hidden">
+            <div class="form-group">
+              <label for="dbSelect">Выберите базу данных</label>
+              <select id="dbSelect" name="database">
+                <option value="postgres">PostgreSQL</option>
+                <option value="mysql">MySQL</option>
+                <option value="mongo">MongoDB</option>
+                <option value="redis">Redis</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="tarifSelectFields" class="hidden">
+            <div class="form-group">
+              <label for="tarifSelectDB">Выберите тариф</label>
+              <select id="tarifSelectDB" name="type">
+                <option value="mini" selected>180 ₽ (1 CPU, 1024 RAM) - Мини</option>
+                <option value="standart">300 ₽ (2 CPU, 2048 RAM) - Стандартный</option>
+                <option value="hard">580 ₽ (4 CPU, 4096 RAM) - Мощный </option>
+                <option value="premium">900 ₽ (6 CPU, 6144 RAM) - Премиум</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="errorContainer" class="error-message" style="display: none;"></div>
+
+          <div style="display: flex;gap: 10px;">
+            <a href="/dashboard" class="cancel-btn">Назад</a>
+            <button type="submit" class="submit-btn">Создать</button>
+          </div>
+        </form>
+
+        <div style="width: 30%;height: 100%;overflow: auto;">
+          <div style="font-size: 1.2rem;color: #000;font-family: AeonikMedium">Начало работы</div>
+          <div style="font-size: 1rem;margin-top:3%;;padding: 15px;background-color: #c9c9c9;border-radius: 25px;">Микросервисы — это способ разделить сервис на маленькие независимые части.</div>
+          <div style="font-size: 1rem;margin-top:3%;padding: 15px;background-color: #c9c9c9;border-radius: 25px;">Для внешнего доступа вам будет выделен поддомен. Маршрут будет указан в панеле управления после создания сервиса.</div>
+          <div style="font-size: 1rem;margin-top:3%;padding: 15px;background-color: #c9c9c9;border-radius: 25px;">Вы можете привязать свой домен. Для этого измените домен в панеле управления и укажите A-запись в своем хостинг провайдере</div>
+          <div style="font-size: 1rem;margin-top:3%;padding: 15px;background-color: #c9c9c9;border-radius: 25px;">Для взаимодейсвтия микросервисов между собой используйте внтуренний маршрут. Маршрут будет указан в панеле управления после создания сервиса</div>
+          <div style="font-size: 1rem;margin-top:3%;padding: 15px;background-color: #c9c9c9;border-radius: 25px;">Помните, микросервисы не сохраняют данные напрямую.</div>
+          <div style="font-size: 1rem;margin-top:3%;padding: 15px;background-color: #c9c9c9;border-radius: 25px;">Для сохранения данных используйте серверные базы данных, для этого выберите тип "база данных" при создании.</div>
+        </div>
+        </div>  
     </div>
+    </div>
+    <script src="/static/js/newservice.js"></script>
+    <script src="/static/js/notification.js"></script>
 </body>
 </html>

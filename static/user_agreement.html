@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Darkstack | Политика конфиденциальности</title>
-
-    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="/static/images/favicon.ico">
 </head>
 <body>
     <style>
@@ -39,19 +38,44 @@
         .agreement-container ul {
             padding-left: 20px;
         }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            background: #f0f0f0;
+            border-radius: 20px;
+            text-decoration: none;
+            color: #333;
+            padding: 8px 12px;
+            transition: background 0.3s;
+        }
+
+        .back-button:hover {
+            background: #e0e0e0;
+        }
+
+        .back-button svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+        }
+
+        .back-button span {
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+        }
     </style>
-    <header>
-        <div class="container-elements-nav">
-            <a href="{% url 'index' %}" class="logo-panel">S K A I D<span class="highlight"> .CLOUD</span></a>
-            <button class="menu-toggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </header>
     <section class="main-view">
         <div class="agreement-container">
+            <a href="/" class="back-button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M15 18l-6-6 6-6"/>
+                </svg>
+                <span>Назад</span>
+            </a>
             <h1 class="agreement-title">Пользовательское соглашение</h1>
             <p>
                 Настоящий документ «Пользовательское соглашение» представляет собой предложение ООО

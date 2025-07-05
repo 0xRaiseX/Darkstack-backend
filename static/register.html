@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Регистрация</title>
+  <link rel="shortcut icon" href="/static/images/favicon.ico">
   <style>
     body {
       background-color: #ffffff;
@@ -21,23 +22,32 @@
       padding: 40px;
       box-sizing: border-box;
       text-align: center;
+      border: 1px solid #000;
+      border-radius: 25px;
     }
 
     h2 {
       margin-bottom: 24px;
     }
 
-    input[type="email"],
-    input[type="password"] {
-      width: 91%;
-      padding: 12px;
-      margin-bottom: 4px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 0.9rem;
-      margin-top: 7px;
-    }
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  margin-top: 7px;
+  margin-bottom: 4px;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif; /* Явный шрифт */
+  line-height: 1.5; /* Контроль высоты строки */
+}
 
+input {
+  height: 44px; /* одинаково для всех */
+}
     .input-error {
       border-color: red;
     }
@@ -76,10 +86,44 @@
       color: black;
       text-decoration: underline;
     }
+
+
+   .password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+  margin-top: 7px;
+}
+
+.password-container input {
+  padding-right: 40px; /* пространство под глазик */
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggle-password img {
+  width: 22px;
+  height: 22px;
+}
   </style>
 </head>
 <body>
   <div class="container">
+  <div style="display: flex; align-items: center; gap: 8px;justify-content: center;margin-bottom: 30px;">
+    <img src="/static/images/logo.png" alt="" style="width: 20px; height: 40px; object-fit: contain;">
+    <img src="/static/images/logo-text2.png" alt="" style="width: 140px; height: 40px; object-fit: contain;">
+  </div>
+
     <h2>Создание аккаунта</h2>
     
     <form id="registerForm" method="post" novalidate>
@@ -88,10 +132,20 @@
       <input type="email" id="email" placeholder="Электронная почта">
       <div class="error-message" id="emailError" style="display: none;">Это поле обязательно</div>
 
-      <input type="password" id="password" placeholder="Пароль">
+      <div class="password-container">
+        <input type="password" id="password" placeholder="Пароль">
+        <span class="toggle-password" data-target="password">
+          <img src="/static/images/eye-hide.png" alt="Показать пароль">
+        </span> 
+      </div>
       <div class="error-message" id="passwordError" style="display: none;">Это поле обязательно</div>
 
-      <input type="password" id="confirmPassword" placeholder="Повторите пароль">
+      <div class="password-container">
+        <input type="password" id="confirmPassword" placeholder="Повторите пароль">
+        <span class="toggle-password" data-target="confirmPassword">
+          <img src="/static/images/eye-hide.png" alt="Показать пароль">
+        </span>
+      </div>
       <div class="error-message" id="confirmPasswordError" style="display: none;">Пароли не совпадают</div>
 
       <button type="submit">Зарегистрироваться</button>
@@ -107,6 +161,26 @@
       Уже есть аккаунт? <a href="/login">Войти</a>
     </div>
   </div>
+
+ <script>
+  document.querySelectorAll('.toggle-password').forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      const inputId = toggle.dataset.target;
+      const input = document.getElementById(inputId);
+      const img = toggle.querySelector('img');
+
+      if (input.type === 'password') {
+        input.type = 'text';
+        img.src = '/static/images/eye-icon.png';
+        img.alt = 'Скрыть пароль';
+      } else {
+        input.type = 'password';
+        img.src = '/static/images/eye-hide.png';
+        img.alt = 'Показать пароль';
+      }
+    });
+  });
+</script>
 
 <script>
   const form = document.getElementById('registerForm');

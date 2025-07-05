@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Панель управления Darkstack</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="shortcut icon" href="/static/images/favicon.ico">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+     <style>
+
+    .menu-line {
+      display: flex;
+      border-bottom: 2px solid #ccc;
+      margin-bottom: 30px;
+    }
+
+    .menu-item {
+      flex: 1; /* Равное распределение ширины */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px 0;
+      cursor: pointer;
+      font-weight: bold;
+      color: #555;
+      transition: color 0.3s, background 0.3s;
+      position: relative;
+      user-select: none;
+    }
+
+    .menu-item:hover {
+      background: #eaeaea;
+      color: #000;
+    }
+
+    .menu-item.active {
+      color: #000;
+      background: #fff;
+    }
+
+    .menu-item.active::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background-color: #000;
+    }
+
+    .content-block {
+      display: none;
+      background: #fff;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: opacity 0.3s ease;
+      border: 1px solid #000
+    }
+
+    .content-block.active {
+      display: block;
+    }
+        </style>
+    <div class="main-dashboard">
+        <div class="nav">
+             <div style="display: flex;margin-top: 10%;width: 54px;height: 10%;border-right: 3px solid #ffffff;">
+                <img src="/static/images/logo-white.png" alt="" style="width: 30px;height: 50px;margin-left: 23%;margin-top: 25%;">
+             </div>
+             <div style="display: flex;width: 54px;height: 20%;border-right: 1px solid #ffffff;"></div>
+             <div class="square">
+                <div class="diagonal"></div>
+            </div>
+           <div class="icon diamond active">
+                <a href="/dashboard" class="tooltip" style="display: flex;cursor: pointer;padding: 10px;margin-left: 0;margin-top: 0;">
+                    <img src="/static/images/logo-white.png" alt="">
+                </a>
+            </div>
+            <div class="square">
+                <div class="diagonal2"></div>
+            </div>
+            <div style="display: flex;;width: 54px;height: 50%;border-left: 1px solid #ffffff;margin-top: 2px;">
+                <div>
+                    <a href="/dashboard/finance" style="display: flex;margin-left: 8%;" class="tooltip">
+                        <img src="/static/images/wallet.png" alt="" class="custom-img">
+                        <span class="tooltip-text">Финансы</span>
+                    </a>
+                    <a href="/dashboard/newservice" style="display: flex;margin-left: 8%;margin-top: 12%;" class="tooltip">
+                        <img src="/static/images/image.png" alt="" class="custom-img">
+                        <span class="tooltip-text">Создать</span>
+                    </a>
+                    <a href="/dashboard/settings" style="display: flex;margin-top: 12%;margin-left: 8%;" class="tooltip">
+                        <img src="/static/images/settings2.png" alt="" class="custom-img">
+                        <span class="tooltip-text">Настройки</span>
+                    </a>
+                    <a href="" style="display: flex;margin-top: 12%;margin-left: 8%;" class="tooltip">
+                        <img src="/static/images/help.png" alt="" class="custom-img">
+                        <span class="tooltip-text">Помощь</span>
+                    </a>
+                </div>
+                <div style="position: absolute;color: #8d8d8d;bottom: 2%;font-size: 0.7rem;margin-left: 10px;">connected//</div>
+            </div>
+        </div>
+        <div class="main-panel">
+            <img src="/static/images/logo-text.png" alt="" style="width: 140px;height: auto;position: absolute;top: -1%;margin-left: 3%">
+        <div class="top-view" style="height: 18%;">
+            <div style="display: flex;height: 100%;">
+                <div class="top-view-main-text">
+                    <img src="/static/images/d2.png" alt="" style="width: 5%;height: auto;margin-right: 1%;">
+                    <span style="margin-top: 5px;">Настройки</span>
+                </div>
+            </div>
+        </div>
+        <div class="top-view-module" style="height:71%;margin-left: 3%;">
+                    <div class="menu-line">
+                        <div class="menu-item active" data-tab="main">Основные</div>
+                        <div class="menu-item" data-tab="advanced">Дополнительные</div>
+                        <!-- <div class="menu-item" data-tab="secret">Секретные</div> -->
+                    </div>
+
+                <div id="main" class="content-block active">
+                    <h2>Основные настройки</h2>
+
+                    <div style="display: flex;width: 100%;margin-top: 2%;">
+                        <div style="display: flex;width: 40%;">ID</div>
+                        <div id="namespace">—</div>
+                    </div>
+
+                    <div style="display: flex;width: 100%;margin-top: 2%;">
+                        <div style="display: flex;width: 40%;">Email</div>
+                        <div id="email">—</div>
+                    </div>
+
+                    <div style="display: flex;width: 100%;margin-top: 2%;">
+                        <div style="display: flex;width: 40%;">Имя</div>
+                        <div id="name">—</div>
+                    </div>
+
+                    <div style="display: flex;width: 100%;margin-top: 2%;">
+                        <div style="display: flex;width: 40%;">Дата регистрации</div>
+                        <div id="created_at">—</div>
+                    </div>
+
+                    <div style="display: flex;">
+                        <div style="margin-top: 30px; display: flex;margin-right: 1%;">
+                            <button id="edit-name-trigger" style="padding: 10px 15px; background: #000; color: #fff; border: none; border-radius: 12px; cursor: pointer;font-size: 0.9rem;">
+                                Редактировать имя
+                            </button>
+                        </div>
+
+                        <div style="margin-top: 30px; display: flex;margin-right: 1%;">
+                            <a id="tg-link" target="_blank" href="#" style="padding: 10px 35px; background: #000000; color: #fff; border: none; border-radius: 12px; cursor: pointer; text-decoration: none; font-size: 0.9rem;">
+                                Привязать телеграм
+                            </a>
+                        </div>
+
+                        <div style="margin-top: 30px; display: flex;">
+                            <a href="/logout" style="padding: 10px 35px; background: #aa0000; color: #fff; border: none; border-radius: 12px; cursor: pointer;text-decoration: none;font-size: 0.9rem;">
+                                Выйти
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+               <script>
+document.getElementById('edit-name-trigger').addEventListener('click', () => {
+    const field = 'name';
+    const currentValue = document.getElementById('name').textContent.trim();
+    const email = document.getElementById('email').textContent.trim();
+
+    const modal = document.createElement('div');
+    modal.id = 'modal';
+    modal.style.cssText = `
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+    `;
+
+    modal.innerHTML = `
+        <div id="modal-content" style="background: #fff; padding: 20px; border-radius: 15px; width: 300px; position: relative; font-family: sans-serif;">
+            <div id="modal-title" style="margin: 0 0 15px 0; font-size: 1.4rem; font-weight: bold;">Изменение имени</div>
+            <span id="close-modal" style="position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 20px;">✖</span>
+            <input type="text" id="new-value-input" style="width: 100%; margin: 10px 0; padding: 8px; box-sizing: border-box;" placeholder="Текущее: ${currentValue}">
+            <div id="error-message" style="color: #dc3545; font-size: 14px; min-height: 20px; margin-bottom: 10px;"></div>
+            <div style="display: flex; justify-content: center;">
+                <button id="save-value-btn" style="padding: 8px 16px; background: #000; color: white; border: none; border-radius: 10px; cursor: pointer; width: 100%;">
+                    Сохранить
+                </button>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    // Закрытие по ✖
+    document.getElementById('close-modal').addEventListener('click', () => {
+        modal.remove();
+    });
+
+    // Закрытие по клику вне окна
+    modal.addEventListener('click', (event) => {
+        const modalContent = document.getElementById('modal-content');
+        if (!modalContent.contains(event.target)) {
+            modal.remove();
+        }
+    });
+
+    // Отправка данных
+    document.getElementById('save-value-btn').addEventListener('click', () => {
+        const newName = document.getElementById('new-value-input').value.trim();
+        const errorEl = document.getElementById('error-message');
+
+        if (!newName) {
+            errorEl.textContent = "Введите новое имя.";
+            return;
+        }
+
+        fetch('/api/change/user_name', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ new_name: newName })
+        })
+        .then(response => {
+            if (!response.ok) throw new Error("Ошибка запроса");
+            return response.json();
+        })
+        .then(data => {
+            document.getElementById('name').textContent = newName;
+            modal.remove();
+        })
+        .catch(error => {
+            errorEl.textContent = "Не удалось сохранить изменения.";
+            console.error(error);
+        });
+    });
+});
+</script>
+
+
+
+
+
+                    <div id="advanced" class="content-block">
+                        <h2>Дополнительные настройки</h2>
+                        <div style="display: flex;width: 100%;margin-top: 2%;">
+                            <div style="display: flex;width: 40%;">Пароль обновлен</div>
+                            <div id="namespace">—</div>
+                        </div>
+
+                        <div style="margin-top: 30px; display: flex;">
+                        <button id="edit-name-trigger" style="padding: 10px 20px; background: #000; color: #fff; border: none; border-radius: 8px; cursor: pointer;">
+                            Изменить пароль
+                        </button>
+                    </div>
+                    </div>
+
+                    <!-- <div id="secret" class="content-block">
+                        <h2>Секретные настройки</h2>
+                        <p>Ты не должен был сюда попасть. Но раз уж ты здесь:</p>
+                        <ul>
+                        <li>Сбросить прогресс человечества до каменного века</li>
+                        <li>Включить режим Бога (не работает с обычными пользователями)</li>
+                        <li>Сделать кофе прямо из браузера (требуется расширение "Кофеварка")</li>
+                        </ul>
+                    </div> -->
+                        <script>
+                        const menuItems = document.querySelectorAll('.menu-item');
+                        const contentBlocks = document.querySelectorAll('.content-block');
+
+                        menuItems.forEach(item => {
+                        item.addEventListener('click', () => {
+                            menuItems.forEach(i => i.classList.remove('active'));
+                            contentBlocks.forEach(block => block.classList.remove('active'));
+
+                            item.classList.add('active');
+                            const tab = item.dataset.tab;
+                            document.getElementById(tab).classList.add('active');
+                        });
+                        });
+                    </script>
+                </div>
+                <script>
+                    document.addEventListener('DOMContentLoaded', async () => {
+                    try {
+                        const response = await fetch('/api/get/user_data');
+                        if (!response.ok) throw new Error('Ошибка при получении данных');
+
+                        const data = await response.json();
+
+                        // Подставляем данные
+                        document.getElementById('namespace').textContent = data.subdomain || '—';
+                        document.getElementById('email').textContent = data.email || '—';
+                        document.getElementById('name').textContent = data.name || '—'; // или другое поле, если есть имя
+                        document.getElementById('created_at').textContent = formatDate(data.created_at);
+                        document.getElementById('tg-link').href  = `https://t.me/darkstack_bot?start=${data.subdomain}`;
+              
+                    } catch (error) {
+                        console.error('Ошибка при загрузке данных:', error);
+                    }
+
+                    // Функция форматирования даты (пример: 2025-06-13 → 13.06.2025)
+                    function formatDate(dateString) {
+                        if (!dateString) return '—';
+                        const date = new Date(dateString);
+                        return date.toLocaleDateString('ru-RU');
+                    }
+                    });
+                </script>
+    </div>
+    </div>
+    <script src="/static/js/notification.js"></script>
+</body>
+</html>
