@@ -11,8 +11,8 @@
 <body>
     <header>
         <a class="logo" href="">
-            <img src="/static/images/logo.png" alt="" style="width: 5%;height: auto;">
-            <img src="/static/images/logo-text.png" alt="" style="width: 35%;height: auto;z-index: 10;margin-left: 2%;">
+            <img src="/static/images/logo.png" alt="" class="logo-img">
+            <img src="/static/images/logo-text.png" alt=""class="logo-img-text">
         </a>
         <div class="logo-panel">
               <div>Главная</div>
@@ -30,28 +30,30 @@
     <div class="main-container">
       <div class="curved-section">
         <div class="main-bussines slide-in">
-            <div style="display: flex;align-items: center;font-family: AeonikMedium;margin-top: 3%;">
-              <img src="/static/images/d2.png" alt="" style="width: 4%;height: auto;margin-right: 1%;">
+            <div class="microservice-1">
+              <img src="/static/images/d2.png" alt="" style="width: 4%;height: auto;margin-right: 1%;min-width: 20px;">
               Здесь работают ваши
             </div>
-            <span style="font-size: 12rem;margin-left: -1%;">Микросервисы</span>
+            <span class="microservice-text">Микросервисы</span>
         </div>
-        <div class="main-for slide-in">Платформа для запуска микросервисов. Возьмем на себя маршутизацию, логирование, бесперебойную работу, обновления, и прочие скучные технические задачи.</div>
+          <div class="microservice-add-text">
+            <div class="main-for slide-in">Платформа для запуска микросервисов. Возьмем на себя маршутизацию, бесперебойную работу, логирование и прочие скучные технические задачи. Нужно просто указать ссылку на Docker образ.</div>
 
-        <a href="/login" class="main-button slide-in">Создать микросервис</a>
+            <a href="/login" class="main-button slide-in">Создать микросервис</a>
+          </div>
         </div>
-        <div class="block-a"></div>
+        <!-- <div class="block-a"></div> -->
     </div>
 
-    <div style="display: flex;width: 100%;justify-content: center;margin-top: 3%;font-size: 1.3rem;font-family: AeonikMedium;color: #000000;opacity: 0.8;">Без сложных настроек, без DevOps, без головной боли</div>
-    <div style="display: flex;width: 100%;justify-content: center;margin-top: 1%;font-size: 1rem;font-family: AeonikMedium;opacity: 0.8;">Нажмите 1 кнопку - и всё работает</div>
+    <div class="add-text-to-main" >Без терминала и серверов, без DevOps, без головной боли</div>
+    <div style="display: flex;width: 100%;justify-content: center;margin-top: 1%;font-size: 1rem;font-family: AeonikMedium;opacity: 0.8;text-align: center;">Нажмите 1 кнопку - и всё работает</div>
 
     <div class="text-container">
         <div class="text-1">
-            <span style="font-size: 4rem;font-family: AeonikMedium;">Универсальные контейнеры</span>
-            <span style="margin-top: 3%;">Ты можешь запускать любые Docker-образы. Мы подстроимся под них — не важно, какой язык или фреймворк ты используешь.</span></div>
+            <span class="universal-service">Универсальные контейнеры</span>
+            <span class="universal-service-text " style="margin-top: 3%;">Ты можешь запускать любые Docker-образы. Мы подстроимся под них — не важно, какой язык или фреймворк ты используешь.</span></div>
         <div class="text-2">
-            <img src="/static/images/main-container.png" alt="" style="width: 50%;height: auto;margin-top: 20%;">
+            <img src="/static/images/main-container.png" alt="" class="img-container">
         </div>
     </div>
 
@@ -66,53 +68,73 @@
   });
 </script>
 
-<div style="display: flex;width: 84%;justify-content: space-between;margin-left: 8%;margin-right: 8%;margin-top: 10%;">
-      <div style="font-size: 3rem;font-family: AeonikMedium;align-items: center;display: flex;width: 100%;">Всё работает само</div>
-  <div style="display: flex;width: 100%;font-size: 1.2rem;justify-content: end;">
+<div class="all-work-auto-container">
+      <div class="all-work-auto-text">Всё работает само</div>
+  <div class="all-work-auto-ul">
     <ul>
       <li style="margin-top: 10px;">Поднимаем и управляем контейнером автоматически</li>
       <li style="margin-top: 10px;">Назначаем поддомен и настраиваем маршрутизацию</li>
       <li style="margin-top: 10px;">Гарантируем бесперебойную работу и авто-восстановление</li>
       <li style="margin-top: 10px;">Подключаем базу данных, если нужно — в пару кликов</li>
       <li style="margin-top: 10px;">Ведём логи, следим за состоянием и присылаем уведомления</li>
+      <li style="margin-top: 10px;">Управление всей системой в одной панеле</li>
     </ul>
 
   </div>
   
 </div>
 
-<div style="display: flex;width: 60%;justify-content: center;margin-top: 12%;font-size: 3rem;font-family: AeonikMedium;color: #000000;text-align: center;padding-left: 20%;padding-right: 20%;">Запускайте приложения абсолютно любой сложности. И не нужно думать о производительности.</div>
-<div style="display: flex;width: 100%;justify-content: center;margin-top: 1%;font-size: 1.2rem;font-family: AeonikMedium;">Мы уже обо всём подумали.</div>
-    <div class="status-container">
-        <div class="status-text">ТЕКУЩЕЕ СОСТОЯНИЕ</div>
+<div class="do-not-think">Запускайте приложения абсолютно любой сложности. И не нужно думать о производительности.</div>
+<div class="do-not-think-mini">Мы уже обо всём подумали.</div>
+   
+
+<div class="status-container">
+        <div class="status-text">ТАРИФЫ</div>
         <div class="status-data">
             <div class="status-a">
+              <div style="display: flex;margin-left: 5%;font-size: 1.8rem;position: absolute;top: 7%;font-family: AeonikMedium">Мини</div>
               <div style="height: 1px;display: flex;width: 80%;margin-left: 5%;border-top: 1px solid #000;margin-bottom: 12%;"></div>
-              <div class="a-text">24</div>
-              <div class="a-description">Бизнесов обслуживаем</div>
+              <div class="a-text">75 ₽</span></div>
+              <div class="a-description">0.2 CPU, 256 RAM</div>
               <div style="height: 1px;display: flex;width: 80%;margin-left: 5%;border-bottom: 1px solid #000;margin-top: 12%;"></div>
+              <div class="month-hour-pay">В месяц (0,1 ₽ в час)</div>
             </div>
             <div class="status-a">
+              <div style="display: flex;margin-left: 5%;font-size: 1.8rem;position: absolute;top: 7%;font-family: AeonikMedium">Стандартный</div>
               <div style="height: 1px;display: flex;width: 80%;margin-left: 5%;border-top: 1px solid #000;margin-bottom: 12%;"></div>
-              <div class="a-text">352</div>
-              <div class="a-description">Сервисов запущено</div>
+              <div class="a-text">105 ₽</div>
+              <div class="a-description">0.5 CPU, 512 RAM</div>
               <div style="height: 1px;display: flex;width: 80%;margin-left: 5%;border-bottom: 1px solid #000;margin-top: 12%;"></div>
+              <div class="month-hour-pay">В месяц (0,15 ₽ в час)</div>
             </div>
             <div class="status-a">
+              <div style="display: flex;margin-left: 5%;font-size: 1.8rem;position: absolute;top: 7%;font-family: AeonikMedium">Мощный</div>
               <div style="height: 1px;display: flex;width: 80%;margin-left: 5%;border-top: 1px solid #000;margin-bottom: 12%;"></div>
-              <div class="a-text">100,000+</div>
-              <div class="a-description">Рублей сэкономлено</div>
+              <div class="a-text">150 ₽</div>
+              <div class="a-description">1 CPU, 1024 RAM</div>
               <div style="height: 1px;display: flex;width: 80%;margin-left: 5%;border-bottom: 1px solid #000;margin-top: 12%;"></div>
+              <div class="month-hour-pay">В месяц (0,21 ₽ в час)</div>
+            </div>
+             <div class="status-a">
+              <div style="display: flex;margin-left: 5%;font-size: 1.8rem;position: absolute;top: 7%;font-family: AeonikMedium">Премиум</div>
+              <div style="height: 1px;display: flex;width: 80%;margin-left: 5%;border-top: 1px solid #000;margin-bottom: 12%;"></div>
+              <div class="a-text">300 ₽</div>
+              <div class="a-description">2 CPU, 2048 RAM</div>
+              <div style="height: 1px;display: flex;width: 80%;margin-left: 5%;border-bottom: 1px solid #000;margin-top: 12%;"></div>
+              <div class="month-hour-pay">В месяц (0,42 ₽ в час)</div>
             </div>
         </div>
+        
         <div class="r">
 
         </div>
     </div>
 
+    <div class="pay-by-hour">Оплата списывается только за выделенные ресурсы раз в 1 час</div>
+
     <div class="project-container">
       <div style="font-family: Aeonik;font-size: 3rem;font-family: AeonikMedium;">О ПРОЕКТЕ</div>
-      <div style="display: flex;width: 40%;margin-top: 3%;font-size: 1.2rem;">Платформа для быстрой разработки, развертывания и управления связанными микросервисами. Она позволяет запускать, отключать и модифицировать сервисы в реальном времени, объединять их в общую инфраструктуру с общей базой данных и настраиваемыми связями. Минимум кода — максимум контроля и гибкости для разработчиков и команд.</div>
+      <div class="project-text ">Платформа для быстрой разработки, развертывания и управления связанными микросервисами. Она позволяет запускать, отключать и модифицировать сервисы в реальном времени, объединять их в общую инфраструктуру с общей базой данных и настраиваемыми связями. Максимум контроля и гибкости для разработчиков и команд.</div>
     </div>
 
     <div class="pluses">
@@ -122,15 +144,18 @@
       </div>
       <div class="data-blocks-p">
         <div class="data-block-p">
-          <div style="font-family: AeonikMedium;font-size: 1.5rem;margin-left: 5%;">🚀 Развёртывание в 1 клик</div>
+          <!-- <div style="font-family: AeonikMedium;font-size: 1.5rem;margin-left: 5%;">🚀 Развёртывание в 1 клик</div> -->
+          <div style="font-family: AeonikMedium;font-size: 1.5rem;margin-left: 5%;">Развёртывание в 1 клик</div>
           <div style="margin-left: 5%;">Запускайте микросервисы за секунды — просто укажите Docker-образ или репозиторий. Никаких серверов, Docker Compose, Nginx или ручных настроек.</div>
         </div>
         <div class="data-block-p">
-           <div style="font-family: AeonikMedium;font-size: 1.5rem;margin-left: 5%;">🔒 Безопасность и маршрутизация по умолчанию</div>
+           <!-- <div style="font-family: AeonikMedium;font-size: 1.5rem;margin-left: 5%;">🔒 Безопасность и маршрутизация по умолчанию</div> -->
+           <div style="font-family: AeonikMedium;font-size: 1.5rem;margin-left: 5%;">Безопасность и маршрутизация по умолчанию</div>
           <div style="margin-left: 5%;">Каждый сервис автоматически получает защищённый HTTPS-доступ, внутреннюю маршрутизацию и изоляцию. SSL-сертификаты и поддомены — без лишних действий.</div>
         </div>
         <div class="data-block-p">
-           <div style="font-family: AeonikMedium;font-size: 1.5rem;margin-left: 5%;">⚙️ Полный автопилот: от логов до масштабирования</div>
+           <!-- <div style="font-family: AeonikMedium;font-size: 1.5rem;margin-left: 5%;">⚙️ Полный автопилот: от логов до масштабирования</div> -->
+           <div style="font-family: AeonikMedium;font-size: 1.5rem;margin-left: 5%;">Полный автопилот: от логов до масштабирования</div>
           <div style="margin-left: 5%;">Платформа сама настраивает логирование, следит за состоянием микросервисов и перезапускает при сбоях. Вы просто работаете — всё остальное уже сделано.</div>
         </div>
       </div>
@@ -234,10 +259,12 @@
   </div>
 </div>
 
+
 <script>
   const marquee = document.getElementById('marquee');
+  const originalBlocks = ['Docker', 'Контейнеры', 'Микросервисы', 'Бизнес', 'Данные'];
 
-  // Дублируем блоки, чтобы заполнить всю ширину окна
+  // Заполнение бегущей строки
   function fillMarquee() {
     const containerWidth = window.innerWidth;
     const track = marquee;
@@ -245,37 +272,46 @@
     const blockWidth = block.offsetWidth + 20; // включая margin
     const visibleCount = Math.ceil(containerWidth / blockWidth);
 
-    const originalBlocks = Array.from(track.children);
+    // Очищаем, но сохраняем оригинальные блоки
+    track.innerHTML = '';
+    originalBlocks.forEach(text => {
+      const div = document.createElement('div');
+      div.className = 'block';
+      div.textContent = text;
+      track.appendChild(div);
+    });
 
-    // Дублируем блоки пока не будет минимум 2x нужного количества
+    // Дублируем блоки для бесшовной анимации
     while (track.children.length < visibleCount * 2) {
-      originalBlocks.forEach(cloneSource => {
-        const clone = cloneSource.cloneNode(true);
+      originalBlocks.forEach(text => {
+        const clone = document.createElement('div');
+        clone.className = 'block';
+        clone.textContent = text;
         track.appendChild(clone);
       });
     }
 
-    // Устанавливаем длительность анимации пропорционально ширине контента
+    // Устанавливаем длительность анимации
     const totalWidth = track.offsetWidth;
     const speed = 60; // пикселей в секунду
     const duration = totalWidth / speed;
-
     track.style.animationDuration = `${duration}s`;
   }
 
-  // Заполнить ленту при загрузке
+  // Инициализация при загрузке
   fillMarquee();
 
-  // Адаптация при изменении размера окна
+  // Обработка ресайза
   window.addEventListener('resize', () => {
-    marquee.innerHTML = ''; // очистить
-    // Добавим изначальные 3 блока снова
-    for (let i = 0; i < 3; i++) {
-      const div = document.createElement('div');
-      div.className = 'block';
-      marquee.appendChild(div);
-    }
     fillMarquee();
+  });
+
+  // Перезапуск при скролле, если элементы в зоне видимости
+  window.addEventListener('scroll', () => {
+    const rect = marquee.getBoundingClientRect();
+    if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+      fillMarquee(); // Пересчитываем только если marquee в зоне видимости
+    }
   });
 </script>
 
@@ -284,16 +320,16 @@
         <div class="end-button-container">
             <a href="/login" class="end-button">Запустить микросервис</a>
         </div>
-        <div class="end-buttons-container" style="margin-top: 3%;">
-            <div class="end-buttons2">
+        <div class="end-buttons-container" style="gap: 20px;">
+            <!-- <div class="end-buttons2"> -->
                 <div>Главная</div>
                 <div>О компании</div>
                 <div>Контакты</div>
                 <div>Telegram</div>
-            </div>
+            <!-- </div> -->
         </div>
 
-        <div class="end-buttons-container" style="margin-top: 2%;flex-direction: column;">
+        <div class="end-buttons-container" style="flex-direction: column;">
 
               <a style="font-size: 0.9rem;cursor: pointer;color: #202325;" href="/data_policy">Политика конфиденциальности</a>
               <a style="font-size: 0.9rem;margin-top: 15px;cursor: pointer;color: #202325;" href="/user_agreement">Пользовательское соглашение</a>
@@ -301,7 +337,7 @@
             <div class="end-buttons3">
                 2025 Все права защищены
             </div>
-            <div class="end-buttons3" style="text-align: center">
+            <div class="end-buttons3" style="text-align: center;margin-top: 0;">
               Мы только начинаем свою работу. Возможны баги.
           </div>
         </div>

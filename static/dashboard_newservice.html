@@ -192,120 +192,157 @@ input[type=number] {
                 <div style="position: absolute;color: #8d8d8d;bottom: 2%;font-size: 0.7rem;margin-left: 10px;">connected//</div>
             </div>
         </div>
+
         <div class="main-panel">
-            <img src="/static/images/logo-text.png" alt="" style="width: 140px;height: auto;position: absolute;top: -1%;margin-left: 3%">
-        <div class="top-view" style="height: 18%;">
-            <div style="display: flex;height: 100%;">
-                <div class="top-view-main-text">
-                    <img src="/static/images/d2.png" alt="" style="width: 5%;height: auto;margin-right: 1%;">
-                    <span style="margin-top: 5px;">Создание нового микросервиса</span>
+            <img src="/static/images/logo-text.png" alt="" class="logo-panel-dashboard">
+            
+            <div class="top-view" style="height: 18%;">
+                <div style="display: flex;height: 100%;">
+                    <div class="top-view-main-text">
+                        <img src="/static/images/d2.png" alt="" style="width: 5%;height: auto;margin-right: 1%;">
+                        <span style="margin-top: 5px;">Создание микросервиса</span>
+                    </div>
+                    <div class="hamburger" onclick="toggleMenu()">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="top-view-module" style="height:71%;margin-left: 3%;flex-direction: row;width: 90%;justify-content: space-between;">
-                 <form id="serviceForm" style="max-width: 520px;width: 31%;overflow: auto;">
-          <div class="form-group">
-            <label for="typeSelect">Тип</label>
-            <select id="typeSelect" name="type">
-              <option value="microservice" selected>Микросервис</option>
-              <option value="database">База данных</option>
-            </select>
-          </div>
 
-           <div class="form-group">
-              <label for="nameInput">Название сервиса</label>
-              <input
-                type="text"
-                id="nameInput"
-                name="nameInput"
-              />
+            <div class="fullscreen-menu" id="fullscreenMenu">
+                <div class="menu-box" style="margin-left: 3%;margin-right: 3%;width: 94%;height: 50%;background-color: #ffffff;margin-top: 3%;border-radius: 25px;border: 1px solid #000;display: flex;flex-direction: column;justify-content: space-between;">
+                  <div class="logo" style="display: flex; justify-content: space-between; align-items: center; height: 10%; margin-top: 4%; width: 94%; border-bottom: 1px solid #000; margin-left: 3%; margin-right: 3%;border-right: 0;">
+                      <a href="" style="display: flex; align-items: center;">
+                          <img src="/static/images/logo.png" alt="" class="logo-img" style="margin-right: 3px;min-width: 15px;">
+                          <img src="/static/images/logo-text.png" alt="" class="logo-img-text" style="min-width: 110px;">
+                      </a>
+
+                      <span id="closeMenu" style="cursor: pointer; font-size: 38px;margin-right: 3%;">&times;</span>
+                  </div>
+
+
+                  <div class="menu-content">
+                    <a href="/dashboard/finance" style="display: flex;align-items: center;">
+                        <img src="/static/images/wallet.png" alt="" class="custom-img-in">
+                        <span>Финансы</span>
+                    </a>
+                    <a href="/dashboard/newservice" style="display: flex;align-items: center;">
+                        <img src="/static/images/image.png" alt="" class="custom-img-in">
+                        <span>Создать</span>
+                    </a>
+                    <a href="/dashboard/settings" style="display: flex;align-items: center;">
+                        <img src="/static/images/settings2.png" alt="" class="custom-img-in">
+                        <span>Настройки</span>
+                    </a>
+                    <a href="" style="display: flex;align-items: center;">
+                        <img src="/static/images/help.png" alt="" class="custom-img-in">
+                        <span>Помощь</span>
+                    </a>
+                  </div>
+
+                  <div style="margin-bottom: 8%;width: 80%;border-top: 1px solid #000;margin-left: 10%;"></div>
+                </div>
             </div>
 
-          <div id="microserviceFields">
-            <div class="form-group">
-              <label for="imageInput">Ссылка на Docker-образ</label>
-              <input
-                type="text"
-                id="imageInput"
-                name="image_url"
-                placeholder="ghcr.io/username/image:tag или docker.io/library/image"
-                
-              />
-            </div>
-            <div class="form-group">
-              <label for="portInput">Порт, на котором работает система</label>
-              <input
-                type="number"
-                id="portInput"
-                name="port"
-                placeholder="Например: 8080"
-                
-              />
-            </div>
-            <div class="form-group">
-              <label for="tarifSelect">Выберите тариф</label>
-              <select id="tarifSelect" name="type">
-                <option value="mini">75 ₽ (0.2 CPU, 256 RAM) - Мини</option>
-                <option value="standart" selected>105 ₽ (0.5 CPU, 512 RAM) - Стандартный</option>
-                <option value="hard">150 ₽ (1 CPU, 1024 RAM) - Мощный </option>
-                <option value="premium">300 ₽ (2 CPU, 2048 RAM) - Премиум</option>
-              </select>
-            </div>
-            <!-- <div class="form-group">
-              <label for="vaultSelect">Выделить физическое хранилеще</label>
-             <select id="vaultSelect" name="type">
-              <option value="0" selected>Нет</option>
-              <option value="10">10 Гб</option>
-              <option value="20">20 Гб</option>
-            </select>
-            </div> -->
-          </div>
+            <div class="top-view-module info-column">
+              
+              <form id="serviceForm">
+                <div class="form-group">
+                  <label for="typeSelect">Тип</label>
+                  <select id="typeSelect" name="type">
+                    <option value="microservice" selected>Микросервис</option>
+                    <option value="database">База данных</option>
+                  </select>
+                </div>
 
-          <!-- Поля базы данных -->
-          <div id="databaseFields" class="hidden">
-            <div class="form-group">
-              <label for="dbSelect">Выберите базу данных</label>
-              <select id="dbSelect" name="database">
-                <option value="postgres">PostgreSQL</option>
-                <option value="mysql">MySQL</option>
-                <option value="mongo">MongoDB</option>
-                <option value="redis">Redis</option>
-              </select>
+              <div class="form-group">
+                  <label for="nameInput">Название сервиса</label>
+                  <input
+                    type="text"
+                    id="nameInput"
+                    name="nameInput"
+                  />
+                </div>
+
+              <div id="microserviceFields">
+                <div class="form-group">
+                  <label for="imageInput">Ссылка на Docker-образ</label>
+                  <input
+                    type="text"
+                    id="imageInput"
+                    name="image_url"
+                    placeholder="ghcr.io/username/image:tag или docker.io/library/image"
+                    
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="portInput">Порт, на котором работает система</label>
+                  <input
+                    type="number"
+                    id="portInput"
+                    name="port"
+                    placeholder="Например: 8080"
+                    
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="tarifSelect">Выберите тариф</label>
+                  <select id="tarifSelect" name="type">
+                    <option value="mini">75 ₽ (0.2 CPU, 256 RAM) - Мини</option>
+                    <option value="standart" selected>105 ₽ (0.5 CPU, 512 RAM) - Стандартный</option>
+                    <option value="hard">150 ₽ (1 CPU, 1024 RAM) - Мощный </option>
+                    <option value="premium">300 ₽ (2 CPU, 2048 RAM) - Премиум</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Поля базы данных -->
+              <div id="databaseFields" class="hidden">
+                <div class="form-group">
+                  <label for="dbSelect">Выберите базу данных</label>
+                  <select id="dbSelect" name="database">
+                    <option value="postgres">PostgreSQL</option>
+                    <option value="mysql">MySQL</option>
+                    <option value="mongo">MongoDB</option>
+                    <option value="redis">Redis</option>
+                  </select>
+                </div>
+              </div>
+
+              <div id="tarifSelectFields" class="hidden">
+                <div class="form-group">
+                  <label for="tarifSelectDB">Выберите тариф</label>
+                  <select id="tarifSelectDB" name="type">
+                    <option value="mini" selected>180 ₽ (1 CPU, 1024 RAM) - Мини</option>
+                    <option value="standart">300 ₽ (2 CPU, 2048 RAM) - Стандартный</option>
+                    <option value="hard">580 ₽ (4 CPU, 4096 RAM) - Мощный </option>
+                    <option value="premium">900 ₽ (6 CPU, 6144 RAM) - Премиум</option>
+                  </select>
+                </div>
+              </div>
+
+              <div id="errorContainer" class="error-message" style="display: none;"></div>
+
+              <div style="display: flex;gap: 10px;">
+                <a href="/dashboard" class="cancel-btn">Назад</a>
+                <button type="submit" class="submit-btn">Создать</button>
+              </div>
+            </form>
+
+            <div class="info-newservice">
+              <div style="font-size: 1.2rem;color: #000;font-family: AeonikMedium">Начало работы</div>
+              <div class="info-service">Микросервисы — это способ разделить сервис на маленькие независимые части.</div>
+              <div class="info-service">Для внешнего доступа вам будет выделен поддомен. Маршрут будет указан в панеле управления после создания сервиса.</div>
+              <div class="info-service">Вы можете привязать свой домен. Для этого измените домен в панеле управления и укажите A-запись в своем хостинг провайдере</div>
+              <div class="info-service">Для взаимодейсвтия микросервисов между собой используйте внутренний маршрут. Он будет указан в панеле управления</div>
+              <div class="info-service">Помните, микросервисы не сохраняют данные физически.</div>
+              <div class="info-service">Для сохранения данных используйте серверные базы данных, для этого выберите тип "база данных" при создании.</div>
             </div>
-          </div>
-
-          <div id="tarifSelectFields" class="hidden">
-            <div class="form-group">
-              <label for="tarifSelectDB">Выберите тариф</label>
-              <select id="tarifSelectDB" name="type">
-                <option value="mini" selected>180 ₽ (1 CPU, 1024 RAM) - Мини</option>
-                <option value="standart">300 ₽ (2 CPU, 2048 RAM) - Стандартный</option>
-                <option value="hard">580 ₽ (4 CPU, 4096 RAM) - Мощный </option>
-                <option value="premium">900 ₽ (6 CPU, 6144 RAM) - Премиум</option>
-              </select>
-            </div>
-          </div>
-
-          <div id="errorContainer" class="error-message" style="display: none;"></div>
-
-          <div style="display: flex;gap: 10px;">
-            <a href="/dashboard" class="cancel-btn">Назад</a>
-            <button type="submit" class="submit-btn">Создать</button>
-          </div>
-        </form>
-
-        <div style="width: 30%;height: 100%;overflow: auto;">
-          <div style="font-size: 1.2rem;color: #000;font-family: AeonikMedium">Начало работы</div>
-          <div style="font-size: 1rem;margin-top:3%;;padding: 15px;background-color: #c9c9c9;border-radius: 25px;">Микросервисы — это способ разделить сервис на маленькие независимые части.</div>
-          <div style="font-size: 1rem;margin-top:3%;padding: 15px;background-color: #c9c9c9;border-radius: 25px;">Для внешнего доступа вам будет выделен поддомен. Маршрут будет указан в панеле управления после создания сервиса.</div>
-          <div style="font-size: 1rem;margin-top:3%;padding: 15px;background-color: #c9c9c9;border-radius: 25px;">Вы можете привязать свой домен. Для этого измените домен в панеле управления и укажите A-запись в своем хостинг провайдере</div>
-          <div style="font-size: 1rem;margin-top:3%;padding: 15px;background-color: #c9c9c9;border-radius: 25px;">Для взаимодейсвтия микросервисов между собой используйте внтуренний маршрут. Маршрут будет указан в панеле управления после создания сервиса</div>
-          <div style="font-size: 1rem;margin-top:3%;padding: 15px;background-color: #c9c9c9;border-radius: 25px;">Помните, микросервисы не сохраняют данные напрямую.</div>
-          <div style="font-size: 1rem;margin-top:3%;padding: 15px;background-color: #c9c9c9;border-radius: 25px;">Для сохранения данных используйте серверные базы данных, для этого выберите тип "база данных" при создании.</div>
-        </div>
         </div>  
+      </div>
     </div>
-    </div>
+    <script src="/static/js/fullscreen-menu.js"></script>
     <script src="/static/js/newservice.js"></script>
     <script src="/static/js/notification.js"></script>
 </body>

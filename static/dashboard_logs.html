@@ -189,12 +189,17 @@ input[type="number"] {
             </div>
         </div>
         <div class="main-panel">
-            <img src="/static/images/logo-text.png" alt="" style="width: 140px;height: auto;position: absolute;top: -1%;margin-left: 3%">
+            <img src="/static/images/logo-text.png" alt="" class="logo-panel-dashboard">
         <div class="top-view" style="height: 18%;">
             <div style="display: flex;height: 100%;">
                 <div class="top-view-main-text">
                     <img src="/static/images/d2.png" alt="" style="width: 5%;height: auto;margin-right: 1%;">
                     <span style="margin-top: 5px;" id="log-name">Логи</span>
+                </div>
+                <div class="hamburger" onclick="toggleMenu()">
+                        <span></span>
+                        <span></span>
+                        <span></span>
                 </div>
             </div>
             <a href="/" class="back-button">
@@ -204,6 +209,44 @@ input[type="number"] {
                 <span>Назад</span>
             </a>
         </div>
+
+        <div class="fullscreen-menu" id="fullscreenMenu">
+                <div class="menu-box" style="margin-left: 3%;margin-right: 3%;width: 94%;height: 50%;background-color: #ffffff;margin-top: 3%;border-radius: 25px;border: 1px solid #000;display: flex;flex-direction: column;justify-content: space-between;">
+                  <div class="logo" style="display: flex; justify-content: space-between; align-items: center; height: 10%; margin-top: 4%; width: 94%; border-bottom: 1px solid #000; margin-left: 3%; margin-right: 3%;border-right: 0;">
+                      <a href="" style="display: flex; align-items: center;">
+                          <img src="/static/images/logo.png" alt="" class="logo-img" style="margin-right: 3px;min-width: 15px;">
+                          <img src="/static/images/logo-text.png" alt="" class="logo-img-text" style="min-width: 110px;">
+                      </a>
+
+                      <span id="closeMenu" style="cursor: pointer; font-size: 38px;margin-right: 3%;">&times;</span>
+                  </div>
+
+
+                  <div class="menu-content">
+                    <a href="/dashboard/finance" style="display: flex;align-items: center;">
+                        <img src="/static/images/wallet.png" alt="" class="custom-img-in">
+                        <span>Финансы</span>
+                    </a>
+                    <a href="/dashboard/newservice" style="display: flex;align-items: center;">
+                        <img src="/static/images/image.png" alt="" class="custom-img-in">
+                        <span>Создать</span>
+                    </a>
+                    <a href="/dashboard/settings" style="display: flex;align-items: center;">
+                        <img src="/static/images/settings2.png" alt="" class="custom-img-in">
+                        <span>Настройки</span>
+                    </a>
+                    <a href="" style="display: flex;align-items: center;">
+                        <img src="/static/images/help.png" alt="" class="custom-img-in">
+                        <span>Помощь</span>
+                    </a>
+                  </div>
+
+                  <div style="margin-bottom: 8%;width: 80%;border-top: 1px solid #000;margin-left: 10%;"></div>
+                  
+                </div>
+                
+            </div>
+
         <div class="top-view-module" style="height:70%;margin-left: 3%;margin-top: 2%;">
           <div id="log-container" style="width: 100%; height: 100%; overflow-y: auto; font-family: monospace; font-size: 0.9rem; white-space: pre-wrap; line-height: 1.4;"></div>
         </div>
@@ -247,6 +290,7 @@ input[type="number"] {
 
     loadLogs();
 </script>
+<script src="/static/js/fullscreen-menu.js"></script>
     <script src="/static/js/notification.js"></script>
 </body>
 </html>

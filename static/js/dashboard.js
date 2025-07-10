@@ -726,8 +726,8 @@ function getServiceType(type) {
                     ${service.type === "database" ? '<span class="database-badge">database</span>' : ''}
                     <span class="edit-pencil" data-deployment-name="${service.deployment_name}" data-field="deployment_name" style="cursor: pointer; margin-left: 5px;">✏️</span>
                 </td>
-                <td>${service.tarif || '—'}</td>
-                <td>${getServiceType(service.type) || '1'}</td>
+                <td id="tarif-th">${service.tarif || '—'}</td>
+                <td id="type-th">${getServiceType(service.type) || '1'}</td>
                 <td>
                     <div style="display:flex;flex-direction:column;">
                         ${service.type === 'microservice' ? `
@@ -762,7 +762,7 @@ function getServiceType(type) {
                         ` : ''}
                     </div>
                 </td>
-                <td>${renderPrice(service) || '—'}</td>
+                <td id="price-th">${renderPrice(service) || '—'}</td>
                 <td>${getUptime(service.uptime_start) || '—'}</td>
                 <td><span class="status ${statusClass}">${status}</span></td>
                 <td><span class="action-arrow" data-deployment-name="${service.deployment_name}" style="cursor: pointer;">→</span></td>

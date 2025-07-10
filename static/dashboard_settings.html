@@ -15,6 +15,7 @@
       display: flex;
       border-bottom: 2px solid #ccc;
       margin-bottom: 30px;
+      margin-left: 3%
     }
 
     .menu-item {
@@ -58,7 +59,8 @@
       border-radius: 15px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       transition: opacity 0.3s ease;
-      border: 1px solid #000
+      border: 1px solid #000;
+      margin-left: 3%;
     }
 
     .content-block.active {
@@ -105,21 +107,67 @@
             </div>
         </div>
         <div class="main-panel">
-            <img src="/static/images/logo-text.png" alt="" style="width: 140px;height: auto;position: absolute;top: -1%;margin-left: 3%">
+            <img src="/static/images/logo-text.png" alt="" class="logo-panel-dashboard">
         <div class="top-view" style="height: 18%;">
             <div style="display: flex;height: 100%;">
                 <div class="top-view-main-text">
                     <img src="/static/images/d2.png" alt="" style="width: 5%;height: auto;margin-right: 1%;">
                     <span style="margin-top: 5px;">Настройки</span>
                 </div>
+
+                <div style="display: flex;height: 90%;align-items: center;">
+                    <div class="hamburger" onclick="toggleMenu()">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="top-view-module" style="height:71%;margin-left: 3%;">
-                    <div class="menu-line">
-                        <div class="menu-item active" data-tab="main">Основные</div>
-                        <div class="menu-item" data-tab="advanced">Дополнительные</div>
-                        <!-- <div class="menu-item" data-tab="secret">Секретные</div> -->
-                    </div>
+
+        <div class="fullscreen-menu" id="fullscreenMenu">
+                <div class="menu-box" style="margin-left: 3%;margin-right: 3%;width: 94%;height: 50%;background-color: #ffffff;margin-top: 3%;border-radius: 25px;border: 1px solid #000;display: flex;flex-direction: column;justify-content: space-between;">
+                  <div class="logo" style="display: flex; justify-content: space-between; align-items: center; height: 10%; margin-top: 4%; width: 94%; border-bottom: 1px solid #000; margin-left: 3%; margin-right: 3%;border-right: 0;">
+                      <a href="" style="display: flex; align-items: center;">
+                          <img src="/static/images/logo.png" alt="" class="logo-img" style="margin-right: 3px;min-width: 15px;">
+                          <img src="/static/images/logo-text.png" alt="" class="logo-img-text" style="min-width: 110px;">
+                      </a>
+
+                      <span id="closeMenu" style="cursor: pointer; font-size: 38px;margin-right: 3%;">&times;</span>
+                  </div>
+
+
+                  <div class="menu-content">
+                    <a href="/dashboard/finance" style="display: flex;align-items: center;">
+                        <img src="/static/images/wallet.png" alt="" class="custom-img-in">
+                        <span>Финансы</span>
+                    </a>
+                    <a href="/dashboard/newservice" style="display: flex;align-items: center;">
+                        <img src="/static/images/image.png" alt="" class="custom-img-in">
+                        <span>Создать</span>
+                    </a>
+                    <a href="/dashboard/settings" style="display: flex;align-items: center;">
+                        <img src="/static/images/settings2.png" alt="" class="custom-img-in">
+                        <span>Настройки</span>
+                    </a>
+                    <a href="" style="display: flex;align-items: center;">
+                        <img src="/static/images/help.png" alt="" class="custom-img-in">
+                        <span>Помощь</span>
+                    </a>
+                  </div>
+
+                  <div style="margin-bottom: 8%;width: 80%;border-top: 1px solid #000;margin-left: 10%;"></div>
+                  
+                </div>
+                
+            </div>
+
+        <div class="top-view-module">
+                <div class="menu-line">
+                    <div class="menu-item active" data-tab="main">Основные</div>
+                    <div class="menu-item" data-tab="advanced">Дополнительные</div>
+                    <!-- <div class="menu-item" data-tab="secret">Секретные</div> -->
+                </div>
 
                 <div id="main" class="content-block active">
                     <h2>Основные настройки</h2>
@@ -146,16 +194,16 @@
 
                     <div style="display: flex;">
                         <div style="margin-top: 30px; display: flex;margin-right: 1%;">
-                            <button id="edit-name-trigger" style="padding: 10px 15px; background: #000; color: #fff; border: none; border-radius: 12px; cursor: pointer;font-size: 0.9rem;">
-                                Редактировать имя
+                            <button id="edit-name-trigger" class="button-change-name">
+                                Изменить имя
                             </button>
                         </div>
 
-                        <div style="margin-top: 30px; display: flex;margin-right: 1%;">
-                            <a id="tg-link" target="_blank" href="#" style="padding: 10px 35px; background: #000000; color: #fff; border: none; border-radius: 12px; cursor: pointer; text-decoration: none; font-size: 0.9rem;">
+                        <!-- <div style="margin-top: 30px; display: flex;margin-right: 1%;">
+                            <a id="tg-link" target="_blank" href="#" class="button-change-tg">
                                 Привязать телеграм
                             </a>
-                        </div>
+                        </div> -->
 
                         <div style="margin-top: 30px; display: flex;">
                             <a href="/logout" style="padding: 10px 35px; background: #aa0000; color: #fff; border: none; border-radius: 12px; cursor: pointer;text-decoration: none;font-size: 0.9rem;">
@@ -320,6 +368,7 @@ document.getElementById('edit-name-trigger').addEventListener('click', () => {
                 </script>
     </div>
     </div>
+    <script src="/static/js/fullscreen-menu.js"></script>
     <script src="/static/js/notification.js"></script>
 </body>
 </html>

@@ -9,88 +9,7 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <script src="https://cdn.lordicon.com/lordicon.js"></script>
-    <div class="main-dashboard">
-        <div class="nav">
-             <div style="display: flex;margin-top: 10%;width: 54px;height: 10%;border-right: 3px solid #ffffff;">
-                <img src="/static/images/logo-white.png" alt="" style="width: 30px;height: 50px;margin-left: 23%;margin-top: 25%;">
-             </div>
-             <div style="display: flex;width: 54px;height: 20%;border-right: 1px solid #ffffff;"></div>
-             <div class="square">
-                <div class="diagonal"></div>
-            </div>
-           <div class="icon diamond active">
-                <a href="/dashboard" class="tooltip" style="display: flex;cursor: pointer;padding: 10px;margin-left: 0;margin-top: 0;">
-                    <img src="/static/images/logo-white.png" alt="">
-                </a>
-            </div>
-            <div class="square">
-                <div class="diagonal2"></div>
-            </div>
-            <div style="display: flex;;width: 54px;height: 50%;border-left: 1px solid #ffffff;margin-top: 2px;">
-                <div>
-                    <a href="/dashboard/finance" style="display: flex;margin-left: 8%;" class="tooltip">
-                        <img src="/static/images/wallet.png" alt="" class="custom-img">
-                        <span class="tooltip-text">Финансы</span>
-                    </a>
-                    <a href="/dashboard/newservice" style="display: flex;margin-left: 8%;margin-top: 12%;" class="tooltip">
-                        <img src="/static/images/image.png" alt="" class="custom-img">
-                        <span class="tooltip-text">Создать</span>
-                    </a>
-                    <a href="/dashboard/settings" style="display: flex;margin-top: 12%;margin-left: 8%;" class="tooltip">
-                        <img src="/static/images/settings2.png" alt="" class="custom-img">
-                        <span class="tooltip-text">Настройки</span>
-                    </a>
-                    <a href="" style="display: flex;margin-top: 12%;margin-left: 8%;" class="tooltip">
-                        <img src="/static/images/help.png" alt="" class="custom-img">
-                        <span class="tooltip-text">Помощь</span>
-                    </a>
-                </div>
-                <div style="position: absolute;color: #8d8d8d;bottom: 2%;font-size: 0.7rem;margin-left: 10px;">connected//</div>
-            </div>
-        </div>
-        <div class="main-panel">
-            <img src="/static/images/logo-text.png" alt="" style="width: 140px;height: auto;position: absolute;top: -1%;margin-left: 3%">
-        <div class="top-view">
-            <div style="display: flex;height: 70%;">
-                <div class="top-view-main-text">
-                    <img src="/static/images/d2.png" alt="" style="width: 5%;height: auto;margin-right: 1%;">
-                    <span style="margin-top: 5px;">Панель управления</span>
-                </div>
-                <div class="top-view-module">
-                    <div class="top-view-blocks-container">
-                        <div class="top-view-block">
-                            <div style="margin-left: 5%;margin-top: 7%;font-weight: 500;font-size: 16px;">Ядра</div>
-                            <div style="margin-left: 5%;font-size: 2rem;">0</div>
-                            <div style="margin-left: 5%;margin-bottom: 7%;color: #8d8d8d;font-family: Aeonik;font-size: 15px;">CPU</div>
-                        </div>
-                        <div class="top-view-block">
-                            <div style="margin-left: 5%;margin-top: 7%;font-weight: 500;font-size: 16px;">Память</div>
-                            <div style="font-size: 2rem;margin-left: 5%;">0</div>
-                            <div style="margin-left: 5%;margin-bottom: 7%;color: #8d8d8d;font-family: Aeonik;font-size: 15px;">RAM</div>
-                        </div>
-                        <div class="top-view-block">
-                             <div style="margin-left: 5%;margin-top: 7%;font-weight: 500;font-size: 16px;">Хранилище</div>
-                            <div style="font-size: 2rem;margin-left: 5%;">0</div>
-                            <div style="margin-left: 5%;margin-bottom: 7%;color: #8d8d8d;font-family: Aeonik;font-size: 15px;">Физическая память</div>
-                        </div>
-                        <div class="top-view-block">
-                             <div style="margin-left: 5%;margin-top: 7%;font-weight: 500;font-size: 16px;">Баланс</div>
-                            <div style="font-size: 2rem;margin-left: 5%;" id="balance">0 ₽</div>
-                            <a href="/dashboard/settings" id="user-email" class="user-email-by-block" style="font-size: 15px;">
-                                <!-- <img src="user.png" alt="" style=""> -->
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="my-services">
-            <div>Мои сервисы</div>
-            <a href="/dashboard/newservice" class="create-new-service-button">Создать</a>
-        </div>
-
- <style>
+    <style>
   .help-icon {
     display: inline-block;
     margin-left: 5px;
@@ -139,39 +58,173 @@
     border-style: solid;
     border-color: #333 transparent transparent transparent;
   }
-</style>
-        <div class="table-wrapper">
-            <table>
-            <thead>
-                <tr>
-                <th>Имя</th>
-                <th>Тариф</th>
-                <th>Тип</th>
-                <th>Домен
-                    <span class="help-icon">?
-                        <span class="tooltip-local">
-                            Верхняя строка — маршрут для внешнего доступа.<br>
-                            Нижняя строка — маршрут для связи между микросервисами.
+  </style>
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+
+    <div class="main-dashboard">
+
+        <div class="nav">
+             <div style="display: flex;margin-top: 10%;width: 54px;height: 10%;border-right: 3px solid #ffffff;">
+                <img src="/static/images/logo-white.png" alt="" style="width: 30px;height: 50px;margin-left: 23%;margin-top: 25%;">
+             </div>
+             <div style="display: flex;width: 54px;height: 20%;border-right: 1px solid #ffffff;"></div>
+             <div class="square">
+                <div class="diagonal"></div>
+            </div>
+           <div class="icon diamond active">
+                <a href="/dashboard" class="tooltip" style="display: flex;cursor: pointer;padding: 10px;margin-left: 0;margin-top: 0;">
+                    <img src="/static/images/logo-white.png" alt="">
+                </a>
+            </div>
+            <div class="square">
+                <div class="diagonal2"></div>
+            </div>
+            <div style="display: flex;;width: 54px;height: 50%;border-left: 1px solid #ffffff;margin-top: 2px;">
+                <div>
+                    <a href="/dashboard/finance" style="display: flex;margin-left: 8%;" class="tooltip">
+                        <img src="/static/images/wallet.png" alt="" class="custom-img">
+                        <span class="tooltip-text">Финансы</span>
+                    </a>
+                    <a href="/dashboard/newservice" style="display: flex;margin-left: 8%;margin-top: 12%;" class="tooltip">
+                        <img src="/static/images/image.png" alt="" class="custom-img">
+                        <span class="tooltip-text">Создать</span>
+                    </a>
+                    <a href="/dashboard/settings" style="display: flex;margin-top: 12%;margin-left: 8%;" class="tooltip">
+                        <img src="/static/images/settings2.png" alt="" class="custom-img">
+                        <span class="tooltip-text">Настройки</span>
+                    </a>
+                    <a href="" style="display: flex;margin-top: 12%;margin-left: 8%;" class="tooltip">
+                        <img src="/static/images/help.png" alt="" class="custom-img">
+                        <span class="tooltip-text">Помощь</span>
+                    </a>
+                </div>
+                <div style="position: absolute;color: #8d8d8d;bottom: 2%;font-size: 0.7rem;margin-left: 10px;">connected//</div>
+            </div>
+        </div>
+
+        <div class="main-panel">
+            <img src="/static/images/logo-text.png" alt=""  class="logo-panel-dashboard">
+            <!-- <img src="images/logo-text.png" alt="" class="logo-panel-dashboard"> -->
+            <div class="top-view">
+                <div class="top-view-add-container">
+
+                    <div class="top-view-main-text">
+                        <img src="/static/images/d2.png" alt="" style="width: 5%;height: auto;margin-right: 1%;">
+                        <!-- <img src="images/d2.png" alt="" style="width: 5%;height: auto;margin-right: 1%;"> -->
+                        <span style="margin-top: 5px;">Панель управления</span>
+                    </div>
+
+                    <div class="hamburger" onclick="toggleMenu()">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <div class="top-view-module">
+                        <div class="top-view-blocks-container">
+                            <div class="top-view-block">
+                                <div style="margin-left: 5%;margin-top: 7%;font-weight: 500;font-size: 16px;">Ядра</div>
+                                <div style="margin-left: 5%;font-size: 2rem;">0</div>
+                                <div style="margin-left: 5%;margin-bottom: 7%;color: #8d8d8d;font-family: Aeonik;font-size: 15px;">CPU</div>
+                            </div>
+                            <div class="top-view-block">
+                                <div style="margin-left: 5%;margin-top: 7%;font-weight: 500;font-size: 16px;">Память</div>
+                                <div style="font-size: 2rem;margin-left: 5%;">0</div>
+                                <div style="margin-left: 5%;margin-bottom: 7%;color: #8d8d8d;font-family: Aeonik;font-size: 15px;">RAM</div>
+                            </div>
+                            <div class="top-view-block">
+                                <div style="margin-left: 5%;margin-top: 7%;font-weight: 500;font-size: 16px;">Хранилище</div>
+                                <div style="font-size: 2rem;margin-left: 5%;">0</div>
+                                <div style="margin-left: 5%;margin-bottom: 7%;color: #8d8d8d;font-family: Aeonik;font-size: 15px;">Физическая память</div>
+                            </div>
+                            <div class="top-view-block">
+                                <div style="margin-left: 5%;margin-top: 7%;font-weight: 500;font-size: 16px;">Баланс</div>
+                                <div style="font-size: 2rem;margin-left: 5%;" id="balance">0 ₽</div>
+                                <a href="/dashboard/settings" id="user-email" class="user-email-by-block" style="font-size: 15px;"></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="fullscreen-menu" id="fullscreenMenu">
+                <div class="menu-box" style="margin-left: 3%;margin-right: 3%;width: 94%;height: 50%;background-color: #ffffff;margin-top: 3%;border-radius: 25px;border: 1px solid #000;display: flex;flex-direction: column;justify-content: space-between;">
+                  <div class="logo" style="display: flex; justify-content: space-between; align-items: center; height: 10%; margin-top: 4%; width: 94%; border-bottom: 1px solid #000; margin-left: 3%; margin-right: 3%;border-right: 0;">
+                      <a href="" style="display: flex; align-items: center;">
+                          <img src="/static/images/logo.png" alt="" class="logo-img" style="margin-right: 3px;min-width: 15px;">
+                          <img src="/static/images/logo-text.png" alt="" class="logo-img-text" style="min-width: 110px;">
+                      </a>
+
+                      <span id="closeMenu" style="cursor: pointer; font-size: 38px;margin-right: 3%;">&times;</span>
+                  </div>
+
+
+                  <div class="menu-content">
+                    <a href="/dashboard/finance" style="display: flex;align-items: center;">
+                        <img src="/static/images/wallet.png" alt="" class="custom-img-in">
+                        <span>Финансы</span>
+                    </a>
+                    <a href="/dashboard/newservice" style="display: flex;align-items: center;">
+                        <img src="/static/images/image.png" alt="" class="custom-img-in">
+                        <span>Создать</span>
+                    </a>
+                    <a href="/dashboard/settings" style="display: flex;align-items: center;">
+                        <img src="/static/images/settings2.png" alt="" class="custom-img-in">
+                        <span>Настройки</span>
+                    </a>
+                    <a href="" style="display: flex;align-items: center;">
+                        <img src="/static/images/help.png" alt="" class="custom-img-in">
+                        <span>Помощь</span>
+                    </a>
+                  </div>
+
+                  <div style="margin-bottom: 8%;width: 80%;border-top: 1px solid #000;margin-left: 10%;"></div>
+                  
+                </div>
+                
+            </div>
+
+            <div class="my-services">
+                <div>Мои сервисы</div>
+                <a href="/dashboard/newservice" class="create-new-service-button">Создать</a>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                <thead>
+                    <tr>
+                    <th>Имя</th>
+                    <th id="tarif-th">Тариф</th>
+                    <th id="type-th">Тип</th>
+                    <th>Домен
+                        <span class="help-icon" id="help-icon">?
+                            <span class="tooltip-local">
+                                Верхняя строка — маршрут для внешнего доступа.<br>
+                                Нижняя строка — маршрут для связи между микросервисами.
+                            </span>
                         </span>
-                    </span>
-                </th>
-                <th>Цена</th>
-                <th>Активное время</th>
-                <th>Состояние</th>
-                <th></th>
-                </tr>
-            </thead>
-            <tbody id="service-table-body">
-            </tbody>
-            </table>
-        </div>
-        <div id="empty-services" style="display: none; justify-content: center; align-items: center; flex-direction: column; height: 50%;">
-            <img src="/static/images/c-m3.png" alt="" style="width: 15%; height: auto;">
-            <span style="font-size: 1.5rem; font-family: Aeonik; margin-top: 2%;">У вас пока нет сервисов. Давайте создадим?</span>
-            <a href="/dashboard/newservice" class="create-new-service-button" style="margin-top: 1%; width: 8%; height: 0; padding: 20px;">Создать</a>
+                    </th>
+                    <th id="price-th">Цена</th>
+                    <th >Активное время</th>
+                    <th>Состояние</th>
+                    <th></th>
+                    </tr>
+                </thead>
+                <tbody id="service-table-body">
+                </tbody>
+                </table>
+            </div>
+
+            <div id="empty-services" style="display: none; justify-content: center; align-items: center; flex-direction: column; height: 50%;">
+                <img src="/static/images/c-m3.png" alt="" style="width: 15%; height: auto;">
+                <span style="font-size: 1.5rem; font-family: Aeonik; margin-top: 2%;">У вас пока нет сервисов. Давайте создадим?</span>
+                <a href="/dashboard/newservice" class="create-new-service-button" style="margin-top: 1%; width: 8%; height: 0; padding: 20px;">Создать</a>
+            </div>
+            
         </div>
     </div>
-    </div>
+    <script src="/static/js/fullscreen-menu.js"></script>
     <script src="/static/js/notification.js"></script>
     <script src="/static/js/dashboard.js"></script>
 </body>

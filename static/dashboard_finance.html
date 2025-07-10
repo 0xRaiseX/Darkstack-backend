@@ -156,61 +156,107 @@ input[type="number"] {
                 <div style="position: absolute;color: #8d8d8d;bottom: 2%;font-size: 0.7rem;margin-left: 10px;">connected//</div>
             </div>
         </div>
+        
         <div class="main-panel">
-            <img src="/static/images/logo-text.png" alt="" style="width: 140px;height: auto;position: absolute;top: -1%;margin-left: 3%">
-        <div class="top-view" style="height: 18%;">
-            <div style="display: flex;height: 100%;">
-                <div class="top-view-main-text">
-                    <img src="/static/images/d2.png" alt="" style="width: 5%;height: auto;margin-right: 1%;">
-                    <span style="margin-top: 5px;">Финансы</span>
+            <img src="/static/images/logo-text.png" alt="" class="logo-panel-dashboard">
+            
+            <div class="top-view" style="height: 18%;">
+                <div style="display: flex;height: 100%;">
+                    <div class="top-view-main-text">
+                        <img src="/static/images/d2.png" alt="" style="width: 5%;height: auto;margin-right: 1%;">
+                        <span style="margin-top: 5px;">Финансы</span>
+                    </div>
+                    <div class="hamburger" onclick="toggleMenu()">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fullscreen-menu" id="fullscreenMenu">
+                <div class="menu-box" style="margin-left: 3%;margin-right: 3%;width: 94%;height: 50%;background-color: #ffffff;margin-top: 3%;border-radius: 25px;border: 1px solid #000;display: flex;flex-direction: column;justify-content: space-between;">
+                  <div class="logo" style="display: flex; justify-content: space-between; align-items: center; height: 10%; margin-top: 4%; width: 94%; border-bottom: 1px solid #000; margin-left: 3%; margin-right: 3%;border-right: 0;">
+                      <a href="" style="display: flex; align-items: center;">
+                          <img src="/static/images/logo.png" alt="" class="logo-img" style="margin-right: 3px;min-width: 15px;">
+                          <img src="/static/images/logo-text.png" alt="" class="logo-img-text" style="min-width: 110px;">
+                      </a>
+
+                      <span id="closeMenu" style="cursor: pointer; font-size: 38px;margin-right: 3%;">&times;</span>
+                  </div>
+
+
+                  <div class="menu-content">
+                    <a href="/dashboard/finance" style="display: flex;align-items: center;">
+                        <img src="/static/images/wallet.png" alt="" class="custom-img-in">
+                        <span>Финансы</span>
+                    </a>
+                    <a href="/dashboard/newservice" style="display: flex;align-items: center;">
+                        <img src="/static/images/image.png" alt="" class="custom-img-in">
+                        <span>Создать</span>
+                    </a>
+                    <a href="/dashboard/settings" style="display: flex;align-items: center;">
+                        <img src="/static/images/settings2.png" alt="" class="custom-img-in">
+                        <span>Настройки</span>
+                    </a>
+                    <a href="" style="display: flex;align-items: center;">
+                        <img src="/static/images/help.png" alt="" class="custom-img-in">
+                        <span>Помощь</span>
+                    </a>
+                  </div>
+
+                  <div style="margin-bottom: 8%;width: 80%;border-top: 1px solid #000;margin-left: 10%;"></div>
+                  
+                </div>
+                
+            </div>
+
+            <div class="top-view-module finance-border">
+                <div class="container">
+                  <div class="balance123">
+                    <span class="icon"></span>
+                    <span class="balance-text">Баланс: <strong>279 ₽</strong></span>
+                  </div>
+
+                  <nav class="menu menu-finance">
+                    <a class="menu-link active" data-target="form-payment" href="#">Оплата</a>
+                    <a class="menu-link" data-target="form-bonuses" href="#">Бонусы и промокоды</a>
+                    <a class="menu-link" data-target="form-history" href="#">История</a>
+                  </nav>
+
+                  <div class="form form-section menu-finance" id="form-payment">
+                    <label for="amount-type">Тип</label>
+                    <select id="amount-type">
+                      <option>Произвольная сумма</option>
+                    </select>
+
+                    <label for="amount">Укажите сумму</label>
+                    <input type="number" id="amount" value="0" min="0" style="width: 96%;" />
+
+                    <label for="payment-method">Способ оплаты</label>
+                    <select id="payment-method">
+                      <option>Российская банковская карта</option>
+                    </select>
+
+                    <button class="pay-button">Оплатить картой</button>
+                  </div>
+
+                  <div class="form form-section" id="form-bonuses" style="display: none;">
+                    <p style="text-align: center;">У вас пока что нет бонусов. Не переживайте, скоро появятся!</p>
+                  </div>
+
+                  <div class="form form-section" id="form-history" style="display: none;">
+                    <p><strong>История транзакций:</strong></p>
+                    <ul>
+                      <li>12.06.2025 – Пополнение на 500 ₽</li>
+                      <li>09.06.2025 – Списание 100 ₽</li>
+                    </ul>
+                  </div>
                 </div>
             </div>
         </div>
-        <div class="top-view-module" style="height:71%;margin-left: 3%;margin-right: 3%;display: flex;align-items: center;width: 94%;border-left: 1px solid #000;border-right: 1px solid #000;border-top-left-radius: 25px;border-top-right-radius: 25px;">
-            <div class="container">
-              <div class="balance123">
-                <span class="icon"></span>
-                <span class="balance-text">Баланс: <strong>279 ₽</strong></span>
-              </div>
-
-              <nav class="menu">
-                <a class="menu-link active" data-target="form-payment" href="#">Оплата</a>
-                <a class="menu-link" data-target="form-bonuses" href="#">Бонусы и промокоды</a>
-                <a class="menu-link" data-target="form-history" href="#">История</a>
-              </nav>
-
-              <div class="form form-section" id="form-payment">
-                <label for="amount-type">Пополнение баланса</label>
-                <select id="amount-type">
-                  <option>Произвольная сумма</option>
-                </select>
-
-                <label for="amount">Облачные услуги</label>
-                <input type="number" id="amount" value="0" min="0" style="width: 96%;" />
-
-                <label for="payment-method">Способ оплаты</label>
-                <select id="payment-method">
-                  <option>Российская банковская карта</option>
-                </select>
-
-                <button class="pay-button">Оплатить картой</button>
-              </div>
-
-              <div class="form form-section" id="form-bonuses" style="display: none;">
-                <p style="text-align: center;">У вас пока что нет бонусов. Не переживайте, скоро появятся!</p>
-              </div>
-
-              <div class="form form-section" id="form-history" style="display: none;">
-                <p><strong>История транзакций:</strong></p>
-                <ul>
-                  <li>12.06.2025 – Пополнение на 500 ₽</li>
-                  <li>09.06.2025 – Списание 100 ₽</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-      </div>
     </div>
+    <script src="/static/js/fullscreen-menu.js"></script>
     <script src="/static/js/finance.js"></script>
     <script src="/static/js/notification.js"></script>
 </body>
