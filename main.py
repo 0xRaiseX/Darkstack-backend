@@ -42,6 +42,10 @@ deployments_collection = db["deployments"]
 
 serializer = URLSafeSerializer(SECRET_KEY)
 
+# k8s_manager_url = "http://k8s-manager-service.default.svc.cluster.local:80/delete-resources"
+# k8s_manager_url = "http://k8s-manager-service/delete-resources"
+    
+
 # === Tarifs ===
 tarifs = {
     "mini": {
@@ -827,7 +831,8 @@ async def continue_deployment_if_possible(user_email: str):
 @app.post("/api/delete_service")
 async def delete_service(payload: DeleteServiceRequest, user_email: str = Depends(get_current_user_email)):
     k8s_manager_url = "http://k8s-manager-service.default.svc.cluster.local:80/delete-resources"
-
+    k8s_manager_url = "http://k8s-manager-service/delete-resources"
+    
     if not payload.deployment_name.endswith("-app"):
         raise HTTPException(status_code=400, detail="Invalid deployment name format")
 

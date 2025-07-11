@@ -13,8 +13,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      min-height: 100vh;
+      height: 100dvh; /* это решает проблему прыгающей формы */
       margin: 0;
+      padding: 16px;
+      overflow: hidden; /* иногда помогает */
     }
 
     .container {

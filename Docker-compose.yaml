@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  mongodb-service:
+    image: mongo:6.0
+    container_name: mongodb-service
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: examplepassword
+    ports:
+      - "27017:27017"
+    networks:
+      - backend-network
+
+  darkstack_backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: darkstack_backend
+    restart: always
+    depends_on:
+      - mongodb-service
+    environment:
+      MONGO_URI: mongodb://root:examplepassword@mongodb-service:27017/?authSource=admin
+    ports:
+      - "8000:8000"
+    networks:
+      - backend-network
+
+networks:
+  backend-network:
+    driver: bridge
