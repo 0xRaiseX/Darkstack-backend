@@ -1542,41 +1542,41 @@ a.tooltip {
   }
 
   .end-text {
-    font-size: 10rem;;
+    font-size: 10rem;
   }
 }
 
 @media (max-width: 1250px) {
    .microservice-text {
-    font-size: 8rem;
-    margin-top: 2%;
-  }
-
-    .end-text {
-        font-size: 8rem;;
-  }   
-}
-
-@media (max-width: 990px) {
-   .microservice-text {
     font-size: 7rem;
     margin-top: 2%;
   }
 
-   .end-text {
-    font-size: 7rem;;
-  }
+    .end-text {
+        font-size: 7rem;
+  }   
 }
 
-
-@media (max-width: 850px) {
+@media (max-width: 990px) {
    .microservice-text {
     font-size: 6rem;
     margin-top: 2%;
   }
 
    .end-text {
-    font-size: 6rem;;
+    font-size: 6rem;
+  }
+}
+
+
+@media (max-width: 850px) {
+   .microservice-text {
+    font-size: 5rem;
+    margin-top: 2%;
+  }
+
+   .end-text {
+    font-size: 5rem;
   }
 }
 
@@ -1589,7 +1589,7 @@ a.tooltip {
   }
 
   .microservice-text {
-    font-size: 3.1rem;
+    font-size: 2rem;
     font-family: AeonikMedium;
     margin-top: 2%;
   }
@@ -1797,7 +1797,7 @@ a.tooltip {
     }
     
     .end-text {
-        font-size: 5rem;
+        font-size: 4rem;
         margin-top: 40px;
     }
 

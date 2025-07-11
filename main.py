@@ -136,6 +136,10 @@ async def get_verify_page(request: Request):
 async def get_data_policy_page(request: Request):
     return "static/data_policy.html"
 
+@app.get("/offer", response_class=FileResponse)
+async def get_offer_page(request: Request):
+    return "static/offer.html"
+
 @app.get("/user_agreement", response_class=FileResponse)
 async def get_user_agreement_page(request: Request):
     return "static/user_agreement.html"
